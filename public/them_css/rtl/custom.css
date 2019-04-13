@@ -1,0 +1,228 @@
+
+.add_button {
+    margin: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.trash_button {
+    margin: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    float: left;
+}
+
+.sidebar_icon {
+    color: #2ABFDD !important;
+}
+
+.sidebar_text {
+    color: 	#106C99 !important;
+}
+
+.registration_header {
+    /*max-height: 48px;*/
+    color: #6a6d75;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 16px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    background-color: #fff;
+    text-align: center !important;
+}
+
+.logo {
+    width: 70px;
+    display: inline-block;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.registration_header h3 {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.website_name {
+    font-family: 'Lemonada', cursive;
+    color: #0197C6;
+}
+
+.sign_up_title {
+    margin-top: 20px;
+    text-align: center !important;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #303236;
+}
+
+.sub_title {
+    font-size: 16px;
+    color: #6a6d75;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.form_label {
+    display: block;
+    line-height: 20px;
+    margin-bottom: 5px;
+    color: #303236;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.form_input {
+    font-size: 16px;
+    margin-bottom: 5px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.05) inset;
+    padding: 0 10px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border: 1px solid #d3d5db;
+    color: #6a6d75;
+    font-family: 'Tajawal', sans-serif;
+    border-radius: 3px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+}
+
+.form_input:focus {
+    outline: none;
+}
+
+.customer_submit_btn {
+    border-radius: 2px;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 14px;
+    line-height: 47.88px;
+    height: 47.88px;
+    padding: 0 35px;
+    display: inline-block;
+    text-decoration: none;
+    border: 0;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    color: #fff;
+    background-color: #0197C6;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.form_divider {
+    border-bottom: 1px solid #d3d5db;
+    margin-bottom: 20px;
+}
+
+.text_box {
+    position: relative;
+    margin-bottom: -12px;
+    text-align: center;
+}
+
+.form_divider .text_box span {
+    font-family: 'Tajawal', sans-serif;
+    background-color: #ffffff;
+    font-size: 16px;
+    padding: 0 10px;
+}
+
+.customer_google_btn {
+    border-radius: 2px;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 14px;
+    height: 47.88px;
+    padding: 0 35px;
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    color: 	#DD4B3E;
+    background-color: #fff;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #b1b5bd;
+    line-height: 3.5;
+}
+
+.customer_google_btn:hover {
+    text-decoration: none;
+    color: #DD4B3E;
+}
+
+.customer_google_btn2 {
+    border-radius: 6px;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 14px;
+    height: 47.88px;
+    padding: 0 35px;
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    color: 	rgb(0, 153, 203) !important;
+    background-color: #fff;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #b1b5bd;
+    line-height: 3.5;
+}
+
+.customer_google_btn2:hover {
+    text-decoration: none;
+    color: rgb(0, 153, 203) !important;
+}
+
+.google_icon {
+    margin-left: 15px;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+@media (max-width: 767px) {
+
+    .phone_hide {
+        display: none;
+    }
+
+}
