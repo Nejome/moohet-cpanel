@@ -85,6 +85,8 @@
 
                             <div class="text-center">
 
+                                <a href="{{url('/customers/'.$customer->id.'/edit')}}" class="btn btn-default">رجوع</a>
+
                                 <button type="submit" class="btn btn-warning">تعديل</button>
 
                             </div>

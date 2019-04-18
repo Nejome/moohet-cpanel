@@ -23,6 +23,7 @@ class CreateCustomersTable extends Migration
             $table->string('town')->nullable();
             $table->string('address')->nullable();
             $table->string('identification_number')->nullable();
+            $table->integer('data_complete')->default(0);
             $table->timestamps();
         });
     }

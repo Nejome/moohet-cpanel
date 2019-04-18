@@ -15,12 +15,13 @@ class CreateWalletInformationsTable extends Migration
     {
         Schema::create('wallet_informations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('customer_id');
-            $table->float('purchases_total');
-            $table->float('sales_total');
-            $table->float('current_balance');
+            $table->unsignedInteger('customer_id');
+            $table->double('purchases_total');
+            $table->double('sales_total');
+            $table->double('current_balance');
             $table->date('last_balance_conversion')->nullable();
             $table->timestamps();
+            $table->foreign('customer_id')->references('id')->on('customers');
         });
     }
 

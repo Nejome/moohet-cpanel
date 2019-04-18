@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Sale_operation;
+use App\Internal_transaction;
 use Illuminate\Http\Request;
 
-class SaleOperationController extends Controller
+class InternalTransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class SaleOperationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Sale_operation  $sale_operation
+     * @param  \App\Internal_transaction  $internal_transaction
      * @return \Illuminate\Http\Response
      */
-    public function show(Sale_operation $sale_operation)
+    public function show(Internal_transaction $internal_transaction)
     {
         //
     }
@@ -52,10 +52,10 @@ class SaleOperationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Sale_operation  $sale_operation
+     * @param  \App\Internal_transaction  $internal_transaction
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sale_operation $sale_operation)
+    public function edit(Internal_transaction $internal_transaction)
     {
         //
     }
@@ -64,10 +64,10 @@ class SaleOperationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Sale_operation  $sale_operation
+     * @param  \App\Internal_transaction  $internal_transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sale_operation $sale_operation)
+    public function update(Request $request, Internal_transaction $internal_transaction)
     {
         //
     }
@@ -75,10 +75,10 @@ class SaleOperationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Sale_operation  $sale_operation
+     * @param  \App\Internal_transaction  $internal_transaction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sale_operation $sale_operation)
+    public function destroy(Internal_transaction $internal_transaction)
     {
         //
     }

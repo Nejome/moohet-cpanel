@@ -280,6 +280,13 @@ class CustomerController extends Controller
         $user->save();
         $customer->save();
 
+        if(!is_null($customer->country_code) && !is_null($customer->country) && !is_null($customer->town) && !is_null($customer->address) && !is_null($customer->identification_number)){
+
+            $customer->data_complete = 1;
+            $customer->save();
+
+        }
+
         //set flash message
         session()->flash('message', 'تم تعديل بياناتك بنجاح');
 

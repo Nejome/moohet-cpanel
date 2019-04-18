@@ -15,15 +15,17 @@ class CreateCustomerOrdersTable extends Migration
     {
         Schema::create('customer_orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('customer_id');
-            $table->integer('order_id');
-            $table->integer('product_id');
-            $table->integer('amount_value');
+            $table->unsignedInteger('customer_id');
+            $table->unsignedInteger('order_id');
+            $table->integer('amount');
             $table->integer('arrival_type');
             $table->integer('position')->default(0);
-            $table->integer('lock')->default(0);
-            $table->integer('price');
+            $table->double('total');
+            $table->integer('payment_type');
+            $table->integer('payment_reference');
             $table->timestamps();
+            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 
