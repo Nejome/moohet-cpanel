@@ -20,7 +20,7 @@
 
                 @if(Auth::check())
 
-                    <p>{{Auth::user()->name}}</p>
+                    <p>{{Auth::user()->customer->name}}</p>
 
                 @endif
 
