@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Wallet_information;
 use Illuminate\Http\Request;
-use App\Sale_operation;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 use GuzzleHttp;
 use Illuminate\Support\Facades\Input;
 use App\payTabs_transaction;
 use Illuminate\Support\Facades\Auth;
+use App\Customer_order;
 
 class WalletInformationController extends Controller
 {
@@ -41,9 +41,9 @@ class WalletInformationController extends Controller
     {
         $wallet = Wallet_information::where('customer_id', $customer_id)->first();
 
-        $sales = Sale_operation::where('customer_id', $customer_id)->get();
+        $orders = Customer_order::where('customer_id', $customer_id)->get();
 
-        return view('wallet.main', compact(['wallet', 'sales']));
+        return view('wallet.main', compact(['wallet', 'orders']));
 
     }
 
@@ -76,7 +76,7 @@ class WalletInformationController extends Controller
 
         $wallet = Wallet_information::where('customer_id', $customer_id)->first();
 
-        if($wallet->customer->phone ==  null || $wallet->customer->country_code ==  null || $wallet->customer->country ==   null || $wallet->customer->town ==  null || $wallet->customer->address ==   null || $wallet->customer->phone ==  '' || $wallet->customer->country_code ==  '' || $wallet->customer->country ==   '' || $wallet->customer->town ==  '' || $wallet->customer->address ==   ''){
+        if($wallet->customer->data_complete == 0){
 
             session()->flash('error_complete_your_data', 'عفوا قم بإكمال بياناتك الشخصية من صفحة بياناتي حتي تستطيع اجراء المعاملات المالية');
 
@@ -110,7 +110,7 @@ class WalletInformationController extends Controller
                 "secret_key" =>env('PAYTABS_MERCHANT_SECRET_KEY'),
                 "site_url" => env('PAYTABS_MERCHANT_SITE_URL'),
                 "return_url" => env('PAYTABS_MERCHANT_RETURN_URL'),
-                "title" => $wallet->customer->name,
+                "title" => 'شحن رصيد',
                 "cc_first_name" => $name[0],
                 "cc_last_name" => $name[1],
                 "cc_phone_number" => $wallet->customer->country_code,
@@ -138,7 +138,7 @@ class WalletInformationController extends Controller
                 "city_shipping" => "none",
                 "postal_code_shipping" => $request->postal_code,
                 "country_shipping" => "SAU",
-                "msg_lang" => "English",
+                "msg_lang" => "Arabic",
                 "cms_with_version" => "Laravel 5.7"
             ]
         ]);

@@ -37,32 +37,38 @@
 
                                     @foreach($orders as $row)
 
-                                        <td>{{$row->product->title}}</td>
-                                        <td>{{$row->product->category}}</td>
-                                        <td>{{$row->price}}</td>
-                                        <td>
+                                        <tr>
 
-                                            @if($row->order->status == 0)
+                                            <td>{{$row->order->product->name}}</td>
+                                            <td>{{$row->order->product->sub_category->title}}</td>
+                                            <td>{{$row->total}} ريال سعودي</td>
 
-                                                إنتظار اكتمال الكمية
+                                            <td>
 
-                                            @elseif($row->order->status == 1)
+                                                @if($row->order->status == 0)
 
-                                                مرحلة الشراء
+                                                    إنتظار اكتمال الكمية
 
-                                            @elseif($row->order->status ==2)
+                                                @elseif($row->order->status == 1)
 
-                                                مرحلة النقل
+                                                    مرحلة الشراء
 
-                                            @elseif($row->order->status == 3)
+                                                @elseif($row->order->status ==2)
 
-                                                وصل الطلب
+                                                    مرحلة النقل
 
-                                            @endif
+                                                @elseif($row->order->status == 3)
 
-                                        </td>
+                                                    وصل الطلب
 
-                                        <td><a href="{{route('customers_orders.show', ['id' => $row->id])}}" class="btn btn-success">عرض التفاصيل</a></td>
+                                                @endif
+
+                                            </td>
+
+                                            <td><a href="{{route('customers_orders.show', ['id' => $row->id])}}" class="btn btn-success">عرض التفاصيل</a></td>
+
+
+                                        </tr>
 
                                     @endforeach
 

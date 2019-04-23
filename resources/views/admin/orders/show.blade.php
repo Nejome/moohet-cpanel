@@ -28,11 +28,11 @@
 
                             <div class="col-md-7">
 
-                                <h1>{{$order->product->title}}</h1>
+                                <h1>{{$order->product->name}}</h1>
 
                                 <p class="">
 
-                                    {{$order->product->information}}
+                                    {{$order->product->description}}
 
                                 </p>
 
@@ -91,7 +91,7 @@
 
                                         <label class="col-md-3 custom_form_label text-primary">البائع</label>
 
-                                        <label class="col-md-9" style="padding-top: 12px;">{{$order->product->seller}}</label>
+                                        <label class="col-md-9" style="padding-top: 12px;">{{$order->product->company}}</label>
 
                                     </div>
 
@@ -121,7 +121,7 @@
                             </div>
 
                             <div class="col-md-3">
-                                <img src="{{asset('images/'.$order->product->image)}}" style="width: 100% !important; height: 100% !important;">
+                                <img src="{{asset('images/'.$order->product->images[0]->name)}}" style="width: 100% !important; height: 100% !important;">
                             </div>
 
                         </div>
@@ -304,7 +304,7 @@
                                                 <tr>
 
                                                     <td>{{$row->customer->name}}</td>
-                                                    <td>{{$row->amount_value}}{{$row->product->less_amount_text}}</td>
+                                                    <td>{{$row->amount}}{{$row->order->product->less_amount_text}}</td>
                                                     <td>
 
                                                         @if($row->arrival_type == 1)
@@ -318,7 +318,7 @@
                                                         @endif
 
                                                     </td>
-                                                    <td>{{$row->price}}</td>
+                                                    <td>{{$row->total}} ريال سعودي </td>
 
                                                     <td>
 

@@ -7,9 +7,7 @@ Route::get('/', function () {
 Route::post('/login', 'loginController@login');
 Route::get('/logout', 'loginController@logout');
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/home', 'CustomerHomeController@home');
 
 
 Route::get('/customers/waiting', 'CustomerController@waiting');

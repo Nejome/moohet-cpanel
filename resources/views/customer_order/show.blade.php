@@ -28,11 +28,11 @@
 
                             <div class="col-md-7">
 
-                                <h1>{{$order->product->title}}</h1>
+                                <h1>{{$order->order->product->name}}</h1>
 
                                 <p class="">
 
-                                    {{$order->product->information}}
+                                    {{$order->order->product->details}}
 
                                 </p>
 
@@ -95,7 +95,7 @@
 
                                         <label class="col-md-3 custom_form_label text-primary">البائع</label>
 
-                                        <label class="col-md-9" style="padding-top: 12px;">{{$order->product->seller}}</label>
+                                        <label class="col-md-9" style="padding-top: 12px;">{{$order->order->product->company}}</label>
 
                                     </div>
 
@@ -115,7 +115,7 @@
 
                                         <label class="col-md-3 custom_form_label text-primary">الكمية</label>
 
-                                        <label class="col-md-9" style="padding-top: 12px;">{{$order->amount_value}} {{$order->product->less_amount_text}}</label>
+                                        <label class="col-md-9" style="padding-top: 12px;">{{$order->order->product->amount_value}} {{$order->order->product->less_amount_text}}</label>
 
                                     </div>
 
@@ -123,7 +123,7 @@
 
                                         <label class="col-md-3 custom_form_label text-primary">السعر</label>
 
-                                        <label class="col-md-9" style="padding-top: 12px;">{{$order->price}} ريال</label>
+                                        <label class="col-md-9" style="padding-top: 12px;">{{$order->total}} ريال</label>
 
                                     </div>
 
@@ -132,7 +132,7 @@
                             </div>
 
                             <div class="col-md-3">
-                                <img src="{{asset('images/'.$order->product->image)}}" style="width: 100% !important; height: 100% !important;">
+                                <img src="{{asset('images/'.$order->order->product->images[0]->name)}}" style="width: 100% !important; height: 100% !important;">
                             </div>
 
                         </div>

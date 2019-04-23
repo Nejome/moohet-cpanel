@@ -37,7 +37,7 @@ class CustomerOrderController extends Controller
     public function show($id)
     {
 
-        $order = Customer_order::find($id);
+        $order = Customer_order::findOrFail($id);
 
         return view('customer_order.show', compact('order'));
 

@@ -36,9 +36,9 @@
                                 @foreach($orders as $order)
 
                                     <tr>
-                                        <td class="text-center">{{$order->product->title}}</td>
+                                        <td class="text-center">{{$order->product->name}}</td>
                                         <td class="text-center">{{$order->current_amount}}{{$order->product->less_amount_text}}</td>
-                                        <td class="text-center">{{$order->product->seller}}</td>
+                                        <td class="text-center">{{$order->product->company}}</td>
                                         <td class="text-center">
 
                                             @if($order->status == 0)

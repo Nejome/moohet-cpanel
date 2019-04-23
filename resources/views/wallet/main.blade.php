@@ -77,58 +77,52 @@
 
                     <div class="panel-body">
 
-                        @if(count($sales) > 0)
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover text-center">
 
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover text-center">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">إسم المنتج</th>
+                                    <th class="text-center">نوع الدفع</th>
+                                    <th class="text-center">قيمة المنتج</th>
+                                    <th class="text-center">الكمية</th>
+                                    <th class="text-center">المجموع</th>
+                                    <th class="text-center">تاريخ العملية</th>
+                                </tr>
+                                </thead>
 
-                                    <thead>
+                                <tbody>
+
+                                @foreach($orders as $row)
+
                                     <tr>
-                                        <th class="text-center">إسم المنتج</th>
-                                        <th class="text-center">نوع الدفع</th>
-                                        <th class="text-center">قيمة المنتج</th>
-                                        <th class="text-center">تاريخ العملية</th>
+
+                                        <td>{{$row->order->product->name}}</td>
+
+                                        <td>
+                                            @if($row->payment_type == 0)
+                                                دفع من محفظتي
+                                            @elseif($row->payment_type == 1)
+                                                 دفع جديد
+                                            @endif
+                                        </td>
+
+                                        <td>{{$row->order->product->price}} ريال سعودي</td>
+
+                                        <td>{{$row->amount}}</td>
+
+                                        <td>{{$row->total}} ريال سعودي</td>
+
+                                        <td>{{$row->created_at->toDayDateTimeString()}}</td>
+
                                     </tr>
-                                    </thead>
 
-                                    <tbody>
+                                @endforeach
 
-                                    @foreach($sales as $sale)
+                                </tbody>
 
-                                        <tr>
-                                            <td>{{$sale->product->title}}</td>
-
-                                            <td>
-
-                                                @if($sale->payment_type == 1)
-
-                                                    دفع مباشر
-
-                                                @elseif($sale->payment_type == 2)
-
-                                                    دفع من الرصيد
-
-                                                @endif
-
-                                            </td>
-
-                                            <td>{{$sale->price}}</td>
-
-                                            <td>{{$sale->created_at}}</td>
-                                        </tr>
-
-                                    @endforeach
-
-                                    </tbody>
-
-                                </table>
-                            </div>
-
-                        @else
-
-                            <h1>لم تقم بعمليات شراء بعد</h1>
-
-                        @endif
+                            </table>
+                        </div>
 
                     </div>
 
