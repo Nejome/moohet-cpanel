@@ -33,7 +33,7 @@
 
     <li class="dropdown">
         <a href="{{route('messages.index')}}">
-            <i class="fa fa-envelope fa-fw"></i></i><div class="navigate_number">{{$new_messages_number}}</div>
+            <i class="fa fa-envelope fa-fw"></i></i>@if($new_messages_number > 0) <div class="navigate_number">{{$new_messages_number}}</div>@endif
         </a>
     </li>
 

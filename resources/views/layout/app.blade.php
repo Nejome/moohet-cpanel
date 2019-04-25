@@ -32,7 +32,7 @@
 </head>
 <body>
 
-<div id="app">
+{{--<div id="app">--}}
 
     <div id="wrapper">
 
@@ -41,7 +41,7 @@
     </div>
 
 
-</div>
+{{--</div>--}}
 
 <script src="{{asset('them_js/jquery-1.11.0.js')}}"></script>
 <script src="{{asset('them_js/bootstrap.min.js')}}"></script>
