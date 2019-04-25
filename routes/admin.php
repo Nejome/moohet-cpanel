@@ -40,3 +40,4 @@ Route::get('categories/{id}/delete', 'CategorieController@destroy');
 Route::resource('sub_categories', 'SubCategoryController');
 Route::get('/sub_categories/{id}/delete', 'SubCategoryController@destroy');
 
+Route::resource('messages', 'MessageController');

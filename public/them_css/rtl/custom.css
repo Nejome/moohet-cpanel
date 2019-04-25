@@ -1,4 +1,19 @@
 
+.navigate_number {
+    width: 20px;
+    height: 20px;
+    border-radius: 50% 50%;
+    background: red;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    line-height: 25px;
+    position: relative;
+    top: -10px;
+    right: -9px;
+    border: 1px solid #eee;
+}
+
 .add_button {
     margin: 5px;
     padding-right: 20px;

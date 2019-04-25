@@ -37,6 +37,10 @@
             </li>
 
             <li>
+                <a href="{{route('messages.index')}}"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> الرسائل</a>
+            </li>
+
+            <li>
                 <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>المنتجات<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
 
