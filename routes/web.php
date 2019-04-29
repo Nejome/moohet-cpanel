@@ -54,3 +54,6 @@ Route::get('/password_reset/email_sent', 'PasswordResetController@email_sent');
 Route::get('/password_reset/wrong_token', 'PasswordResetController@wrong_token');
 Route::post('/password_reset/create_password/{token}', 'PasswordResetController@create_password');
 Route::get('/password_reset/complete', 'PasswordResetController@complete');
+
+/*Notification*/
+Route::resource('notifications', 'NotificationController');

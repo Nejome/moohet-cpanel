@@ -26,12 +26,13 @@
 
             </li>
 
+            <li>
+                <a href="{{url('/home')}}"><i class="fa fa-dashboard fa-fw"></i> لوحة التحكم</a>
+            </li>
 
-                <li>
-
-                    <a href="{{url('/home')}}"><i class="fa fa-dashboard fa-fw"></i> لوحة التحكم</a>
-
-                </li>
+            <li>
+                <a href="{{route('notifications.index')}}"><i class="fa fa-bell fa-fw"></i> الإشعارات</a>
+            </li>
 
             <li>
                 <a href="{{route('customers_orders.index')}}"><i class="fa fa-table fa-fw"></i> طلباتي</a>

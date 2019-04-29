@@ -10,8 +10,8 @@ use Socialite;
 use App\Wallet_information;
 use App\Mail\VerifyEmail;
 use App\unverifiedCustomer;
-
 use App\User;
+use File;
 
 class CustomerController extends Controller
 {
@@ -30,7 +30,7 @@ class CustomerController extends Controller
 
         }catch(Exception $e){
 
-            return redirect('/customers/create');
+            return redirect(url('/customers/create'));
 
         }
 
@@ -50,31 +50,30 @@ class CustomerController extends Controller
         }else {
 
             //create the user
-            $user = new User;
+            $fileContents = file_get_contents($customer->getAvatar());
+            $fileName = $customer->getId() . ".jpg";
+            File::put(public_path() . '/images/' . $fileName, $fileContents);
 
+            $user = new User;
             $user->name = $customer->name;
             $user->email = $customer->email;
             $user->google_id = $customer->id;
             $user->role = 2;
-
+            $user->image = $fileName;
             $user->save();
 
 
             //store the customer data
             $new_customer = New Customer;
-
             $new_customer->user_id = $user->id;
             $new_customer->name = $user->name;
-
             $new_customer->save();
 
             $wallet = new Wallet_information;
-
             $wallet->customer_id = $new_customer->id;
             $wallet->purchases_total = 0;
             $wallet->sales_total = 0;
             $wallet->current_balance = 0;
-
             $wallet->save();
 
             //login
