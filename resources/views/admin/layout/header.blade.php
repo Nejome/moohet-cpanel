@@ -37,4 +37,47 @@
         </a>
     </li>
 
+    <li class="dropdown">
+
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+            {{--@if($new_notifications_number > 0) <span class="navigate_number">{{$new_notifications_number}}</span> @endif--}}
+        </a>
+
+        <ul class="dropdown-menu dropdown-alerts">
+
+            @foreach($admin_global_notifications as $row)
+                <li>
+                    <a href="{{url('/admin/notifications/'.$row->id.'/show')}}">
+                        <div>
+                            {{$row->title}}
+                            <br>
+                            <span class="text-muted small">{{$row->created_at->diffForHumans()}}</span>
+                        </div>
+                    </a>
+                </li>
+            @endforeach
+
+            @if(count($admin_global_notifications) > 0)
+                <li class="divider"></li>
+
+                <li>
+                    <a class="text-center" href="#">
+                        <strong>عرض كافة الإشعارات</strong>
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                </li>
+            @else
+                <li>
+                    <a class="text-center" href="#">
+                        <span class="text-muted">لا توجد لديك اشعارات</span>
+                    </a>
+                </li>
+
+            @endif
+
+        </ul>
+
+    </li>
+
 </ul>

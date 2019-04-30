@@ -20,6 +20,9 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'http://localhost/moohet_cpanel/my_wallet/charge/callback',
-        'https://moohet.com/my_wallet/charge/callback',
+        'https://moohet.com/cp/my_wallet/charge/callback',
+
+        'http://localhost/moohet_cpanel/api/login',
+        'https://moohet.com/cp/api/login',
     ];
 }

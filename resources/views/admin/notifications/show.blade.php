@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('admin.layout.master')
 
 @section('content')
 
@@ -41,12 +41,11 @@
                     </div>
 
                     <div class="panel-footer text-center">
-                        <a href="{{route('notifications.index')}}" class="btn btn-default">رجوع</a>
-                        <form method="POST" style="display: inline;" action="{{route('notifications.destroy', ['notification' => $notification->id])}}">
-                            {{csrf_field()}}
-                            @method('DELETE')
-                            <button type="submit"class="btn btn-danger">حذف</button>
-                        </form>
+
+                        <a href="{{url('/admin/notifications')}}" class="btn btn-default">رجوع</a>
+
+                        <a href="{{url('/admin/notifications/'.$notification->id.'/delete')}}" class="btn btn-danger">حذف</a>
+
                     </div>
 
                 </div>
