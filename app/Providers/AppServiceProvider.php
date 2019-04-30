@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Message;
+use App\Notification;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +16,19 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        view()->share('new_messages_number', Message::where('showed', 0)->count());
+        view()->composer('*', function($view) {
+
+            $new_messages_number = Message::where('showed', 0)->count();
+            $new_notifications_number = Notification::where(['owner_id' => Auth()->check() && Auth()->user()->role == 2 ? Auth()->user()->customer->id : null , 'showed' => 0])->count();
+            $notifications = Notification::where('owner_id',Auth()->check() && Auth()->user()->role == 2 ? Auth()->user()->customer->id : null)->limit(5)->get();
+
+            $view->with([
+                'new_messages_number' => $new_messages_number,
+                'new_notifications_number' => $new_notifications_number,
+                'notifications' => $notifications,
+                ]);
+
+        });
 
     }
 
