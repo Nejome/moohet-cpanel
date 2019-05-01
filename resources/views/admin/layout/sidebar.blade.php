@@ -37,6 +37,11 @@
             </li>
 
             <li>
+                <a href="{{url('/admin/notifications')}}"><i class="fa fa-bell fa-fw"></i> الإشعارات</a>
+            </li>
+
+
+            <li>
                 <a href="{{route('messages.index')}}"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> الرسائل</a>
             </li>
 

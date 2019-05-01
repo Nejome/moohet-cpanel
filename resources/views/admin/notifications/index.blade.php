@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('admin.layout.master')
 
 @section('content')
 
@@ -39,18 +39,23 @@
                             @foreach($notifications as $row)
 
                                 <tr class="text-center @if($row->showed == 0) info @endif">
+
                                     <td class="text-center">{{$row->id}}</td>
-                                    <td class="text-center"><a style="color: black;" href="{{route('notifications.show', ['notification' => $row->id])}}">{{$row->title}}</a></td>
+
+                                    <td class="text-center"><a style="color: black;" href="{{url('/admin/notifications/'.$row->id.'/show')}}">{{$row->title}}</a></td>
+
                                     <td class="text-center">{{$row->created_at->toDayDateTimeString()}}</td>
+
                                     <td class="text-center">
-                                        <a class="btn btn-primary" href="{{route('notifications.show', ['notification' => $row->id])}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+
+                                        <a class="btn btn-primary" href="{{url('/admin/notifications/'.$row->id.'/show')}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+
                                         |
-                                        <form method="POST" style="display: inline;" action="{{route('notifications.destroy', ['notification' => $row->id])}}">
-                                            {{csrf_field()}}
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                        </form>
+
+                                        <a class="btn btn-danger" href="{{url('/admin/notifications/'.$row->id.'/delete')}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+
                                     </td>
+
                                 </tr>
 
                             @endforeach

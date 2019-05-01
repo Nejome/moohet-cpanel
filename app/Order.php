@@ -32,7 +32,12 @@ class order extends Model
                      $order->status = 1;
                      $order->save();
 
-                     //send notification to admin and customers
+                     //send notification to admin
+                     $admin_notification_success = new Notification;
+                     $admin_notification_success->owner_id = 0;
+                     $admin_notification_success->title = 'تم تحويل احدي الطلبيات الي حالة الشراء';
+                     $admin_notification_success->body = 'تم تحويل طلبية منتج ' . $order->product->name . ' برقم' . $order->id . ' الي حالة الشراء ، وذلك بعد اكتمال الحد الادني لكمية الطلبية وانتهاء فترة الإنتظار';
+                     $admin_notification_success->save();
 
                  }else {
 
@@ -55,14 +60,21 @@ class order extends Model
                          $row->fail = 1;
                          $row->save();
 
-                         //send notification for customers
+                         //send notification to customer
                          $notification = new Notification;
                          $notification->owner_id = $row->customer_id;
                          $notification->title = 'تم إلغاء احدي الطلبيات التي شاركت فيها';
-                         $notification->body = ' تم إلغاء طلبية منتج '.$order->product->name.' التي قمت بالمشاركة فيها ، نظراً لعدم إكتمال الحد الادني لكمية الطلبية . تم تحويل قيمة الطلبية التي دفعتها الي رصيدك الحالي وهي  '.$row->total.' ريال سعودي . وشكراً';
+                         $notification->body = ' تم إلغاء طلبية منتج '.$order->product->name.' التي قمت بالمشاركة فيها ، نظراً لعدم إكتمال الحد الادني لكمية الطلبية و لإنتهاء فترة الانتظار . تم تحويل قيمة الطلبية التي دفعتها الي رصيدك الحالي وهي  '.$row->total.' ريال سعودي ، وايضاً تم خصم هذا المبلغ من مجموع المشتريات الخاص بك  . وشكراً';
                          $notification->save();
 
                      }
+
+                     //send notification to admin
+                     $admin_notification = new Notification;
+                     $admin_notification->owner_id = 0;
+                     $admin_notification->title = 'تم إلغاء احدي الطلبيات';
+                     $admin_notification->body = 'تم إلغاء طلبية منتج ' . $order->product->name. ' رقم ' . $order->id .' نظراً لعدم إكتمال الحد الادني لكمية الطلبية ولإنتهاء فترة الانتظارة . تم تحويل مبالغ العملاء المدفوعة في الطلبية الي ارصدتهم بالمحفظة وخصم المبالغ المدفوعة من مجموع المشتريات';
+                     $admin_notification->save();
 
                  }
 

@@ -21,11 +21,13 @@ class AppServiceProvider extends ServiceProvider
             $new_messages_number = Message::where('showed', 0)->count();
             $new_notifications_number = Notification::where(['owner_id' => Auth()->check() && Auth()->user()->role == 2 ? Auth()->user()->customer->id : null , 'showed' => 0])->count();
             $notifications = Notification::where('owner_id',Auth()->check() && Auth()->user()->role == 2 ? Auth()->user()->customer->id : null)->limit(5)->get();
+            $admin_notifications = Notification::where('owner_id', 0)->limit(5)->get();
 
             $view->with([
                 'new_messages_number' => $new_messages_number,
                 'new_notifications_number' => $new_notifications_number,
-                'notifications' => $notifications,
+                'customer_global_notifications' => $notifications,
+                'admin_global_notifications' => $admin_notifications,
                 ]);
 
         });

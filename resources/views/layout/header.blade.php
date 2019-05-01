@@ -34,7 +34,7 @@
 
         <ul class="dropdown-menu dropdown-alerts">
 
-            @foreach($notifications as $row)
+            @foreach($customer_global_notifications as $row)
                 <li>
                     <a href="{{route('notifications.show', ['notification' => $row->id])}}">
                         <div>
@@ -46,7 +46,7 @@
                 </li>
             @endforeach
 
-            @if(count($notifications) > 0)
+            @if(count($customer_global_notifications) > 0)
                 <li class="divider"></li>
 
                 <li>
