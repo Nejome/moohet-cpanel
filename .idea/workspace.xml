@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="03a12b7b-3a78-43f9-b992-4b7da38bf1df" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="03a12b7b-3a78-43f9-b992-4b7da38bf1df" name="Default Changelist" comment="">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/notifications/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/notifications/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NotificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NotificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/AdminNotificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/AdminNotificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/NotificationFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/NotificationFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_04_29_153443_add_success_fail_to_customer_orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_04_29_153443_add_success_fail_to_customer_orders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_04_29_154921_create_notifications_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_04_29_154921_create_notifications_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layout/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/notifications/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/notifications/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/notifications/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/notifications/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+>>>>>>> 1199903b4740ae9a76741ba5e9459ca2a84c3a96
+    </list>
+>>>>>>> c5f4981b5bc53b408e7fe2c59f3b19e70bf93ef9
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -177,7 +206,7 @@
       <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-highlighter" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="100" />
     <option name="y" value="27" />
     <option name="width" value="1380" />
@@ -206,6 +235,24 @@
               <item name="moohet_cpanel" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
+<<<<<<< HEAD
+=======
+            <path>
+              <item name="moohet_cpanel" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
+<<<<<<< HEAD
+              <item name=".idea" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+=======
+              <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="moohet_cpanel" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="images" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+>>>>>>> 1199903b4740ae9a76741ba5e9459ca2a84c3a96
+            </path>
+>>>>>>> c5f4981b5bc53b408e7fe2c59f3b19e70bf93ef9
           </expand>
           <select />
         </subPane>
@@ -274,17 +321,37 @@
       <workItem from="1556103281360" duration="1318000" />
       <workItem from="1556106565628" duration="68000" />
       <workItem from="1556107379026" duration="4335000" />
+<<<<<<< HEAD
+      <workItem from="1556520817650" duration="18966000" />
+      <workItem from="1556691531157" duration="927000" />
+=======
       <workItem from="1556430477325" duration="98000" />
       <workItem from="1556443257884" duration="33000" />
+<<<<<<< HEAD
       <workItem from="1556606682721" duration="17178000" />
+=======
+      <workItem from="1556606682721" duration="17118000" />
+>>>>>>> 1199903b4740ae9a76741ba5e9459ca2a84c3a96
+>>>>>>> c5f4981b5bc53b408e7fe2c59f3b19e70bf93ef9
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="56598000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="58943000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="25" width="1366" height="743" extended-state="7" />
+=======
+    <option name="totallyTimeSpent" value="56538000" />
+>>>>>>> c5f4981b5bc53b408e7fe2c59f3b19e70bf93ef9
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1600" height="875" extended-state="6" />
+>>>>>>> 1199903b4740ae9a76741ba5e9459ca2a84c3a96
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.248125" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -548,6 +615,10 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin.php" />
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/AdminNotificationController.php">
+=======
     <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="488">
@@ -559,6 +630,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layout/sidebar.blade.php">
+>>>>>>> 1199903b4740ae9a76741ba5e9459ca2a84c3a96
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="489">
           <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
