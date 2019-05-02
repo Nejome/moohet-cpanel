@@ -279,9 +279,19 @@ class CustomerController extends Controller
         $user->save();
         $customer->save();
 
-        if(!is_null($customer->country_code) && !is_null($customer->country) && !is_null($customer->town) && !is_null($customer->address) && !is_null($customer->identification_number)){
+        if(!is_null($customer->country_code) && $customer->country_code != ''
+            && !is_null($customer->country) && $customer->country != ''
+            && !is_null($customer->town) && $customer->town != ''
+            && !is_null($customer->address) && $customer->address != ''
+            && !is_null($customer->identification_number) && $customer->identification_number != ''
+        ){
 
             $customer->data_complete = 1;
+            $customer->save();
+
+        }else {
+
+            $customer->data_complete = 0;
             $customer->save();
 
         }

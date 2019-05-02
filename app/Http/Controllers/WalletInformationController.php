@@ -15,27 +15,6 @@ use App\Customer_order;
 class WalletInformationController extends Controller
 {
 
-    /*
-     * 10035388
-     * MMWIDDa8S2CErubmHPqTWXMMMarwp9tbVpUy35GV7jzzNLVuAmnxkaj6kKCJT5VPvQnzW4u3n4DbPyFqV3Xfdhlx2XhW3dLz399Z
-     * */
-
-    public function index()
-    {
-        //
-    }
-
-    public function create()
-    {
-        //
-    }
-
-
-    public function store(Request $request)
-    {
-        //
-    }
-
 
     public function show($customer_id)
     {
@@ -78,7 +57,7 @@ class WalletInformationController extends Controller
 
         if($wallet->customer->data_complete == 0){
 
-            session()->flash('error_complete_your_data', 'عفوا قم بإكمال بياناتك الشخصية من صفحة بياناتي حتي تستطيع اجراء المعاملات المالية');
+            session()->flash('complete_data_msg', 'عفوا قم بإكمال بياناتك الشخصية من صفحة بياناتي حتي تستطيع اجراء المعاملات المالية.');
 
             return back();
 
@@ -147,7 +126,7 @@ class WalletInformationController extends Controller
 
         if(json_decode($result->getBody())->response_code == "4001"){
 
-            session()->flash('complete_data_msg', 'عفوا قم بإكمال بياناتك الشخصية من صفحة بياناتي حتي تستطيع اجراء المعاملات المالية');
+            session()->flash('complete_data_msg', 'عفوا قم بإكمال بياناتك الشخصية من صفحة بياناتي حتي تستطيع اجراء المعاملات المالية.');
 
             return redirect()->back();
 

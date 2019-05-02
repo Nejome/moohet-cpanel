@@ -13,6 +13,42 @@
 
         <div class="col-lg-9 col-centered">
 
+            @if(session()->has('complete_data_msg'))
+
+                <div class="alert alert-danger">
+
+                    {{session()->get('complete_data_msg')}}
+
+                    <a href="{{url('/customers/'.Auth::user()->customer->id.'/edit')}}" class="text-primary">اضفط هنا لإكمال بياناتك</a>
+
+                </div>
+
+            @endif
+
+            @if(session()->has('some_error'))
+
+                <div class="alert alert-danger">{{session()->get('some_error')}}</div>
+
+            @endif
+
+            @if(session()->has('after_error'))
+
+                <div class="alert alert-danger">{{session()->get('after_error')}}</div>
+
+            @endif
+
+            @if(session()->has('will_review_msg'))
+
+                <div class="alert alert-info">{{session()->get('will_review_msg')}}</div>
+
+            @endif
+
+            @if(session()->has('transaction_complete'))
+
+                <div class="alert alert-info">{{session()->get('transaction_complete')}}</div>
+
+            @endif
+
             <div class="panel panel-default">
 
                 <div class="panel-heading">
@@ -29,41 +65,6 @@
 
                         <div class="form-group row">
 
-                            @if(session()->has('error_complete_your_data'))
-
-                                <div class="alert alert-danger">{{session()->get('error_complete_your_data')}}</div>
-
-                            @endif
-
-                            @if(session()->has('complete_data_msg'))
-
-                                <div class="alert alert-warning">{{session()->get('complete_data_msg')}}</div>
-
-                            @endif
-
-                            @if(session()->has('some_error'))
-
-                                <div class="alert alert-danger">{{session()->get('some_error')}}</div>
-
-                            @endif
-
-                            @if(session()->has('after_error'))
-
-                                <div class="alert alert-danger">{{session()->get('after_error')}}</div>
-
-                            @endif
-
-                            @if(session()->has('will_review_msg'))
-
-                                <div class="alert alert-info">{{session()->get('will_review_msg')}}</div>
-
-                            @endif
-
-                            @if(session()->has('transaction_complete'))
-
-                                <div class="alert alert-info">{{session()->get('transaction_complete')}}</div>
-
-                            @endif
 
                             <label class="col-md-3 custom_form_label">المبلغ</label>
                             <input name="amount" type="text" class="form-control col-md-8" placeholder="أدخل المبلغ المراد شحنه">
