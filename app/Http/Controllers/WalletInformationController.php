@@ -118,7 +118,7 @@ class WalletInformationController extends Controller
                 "postal_code_shipping" => $request->postal_code,
                 "country_shipping" => "SAU",
                 "msg_lang" => "Arabic",
-                "cms_with_version" => "Laravel 5.7"
+                "cms_with_version" => "Laravel 5.7",
             ]
         ]);
 
