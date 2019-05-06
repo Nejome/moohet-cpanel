@@ -43,7 +43,12 @@
             </li>
 
             <li>
-                <a href="#"><i class="fa fa-briefcase" aria-hidden="true"></i> محفظتي<span class="fa arrow"></span></a>
+                <a href="#">
+                    <i class="fa fa-briefcase" aria-hidden="true"></i>
+                    محفظتي
+                    <span class="balance_value">{{number_format(Auth::user()->customer->wallet->current_balance, 2)}} ريال سعودي</span>
+                    <span class="fa arrow"></span>
+                </a>
                 <ul class="nav nav-second-level">
 
                     <li>
