@@ -25,6 +25,10 @@ Route::get('/products/trash/{id}/recovery', 'ProductController@recovery');
 Route::resource('products', 'ProductController');
 Route::get('/products/{id}/delete', 'ProductController@destroy');
 
+Route::get('/products/abb/create', 'AbbProductController@create');
+Route::post('/products/abb/show', 'AbbProductController@show');
+Route::post('/products/abb/store', 'AbbProductController@store');
+
 
 Route::resource('orders', 'OrderController');
 Route::post('/orders/{id}/change_status', 'OrderController@change_status');

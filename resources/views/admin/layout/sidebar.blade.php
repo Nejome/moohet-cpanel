@@ -53,6 +53,10 @@
                         <a href="{{route('products.index')}}">إدارة المنتجات</a>
                     </li>
 
+                    <li>
+                        <a href="{{url('/admin/products/abb/create')}}">منتجات 1688</a>
+                    </li>
+
                     <li class="">
 
                         <a href="#">الفئات والتصنيفات<span class="fa arrow"></span></a>
