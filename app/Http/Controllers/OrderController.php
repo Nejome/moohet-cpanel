@@ -19,18 +19,6 @@ class OrderController extends Controller
     }
 
 
-    public function create()
-    {
-        //
-    }
-
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-
     public function show($id)
     {
 
@@ -41,23 +29,6 @@ class OrderController extends Controller
     }
 
 
-    public function edit(order $order)
-    {
-        //
-    }
-
-
-    public function update(Request $request, order $order)
-    {
-        //
-    }
-
-
-    public function destroy(order $order)
-    {
-        //
-    }
-
     public function change_status(Request $request, $id){
 
         $order = Order::find($id);
@@ -65,12 +36,6 @@ class OrderController extends Controller
         if(isset($request->status) && $request->status != ''){
 
             $order->status = $request->status;
-
-            if($request->status == 3){
-
-                $order->lock = 1;
-
-            }
 
         }
 
@@ -92,41 +57,20 @@ class OrderController extends Controller
 
     }
 
-    public function change_customer_order_status($id, $customer_order_id){
+    public function arrived_orders() {
 
-        $order = Order::find($id);
+        $orders = order::where('status', 3)->get();
 
-        $customer_order = Customer_order::find($customer_order_id);
-
-        if($customer_order->arrival_type == 1){
-
-            $customer_order->position = 1;
-
-            $customer_order->lock = 1;
-
-            $customer_order->save();
-
-        }else {
-
-            $store = new Store;
-
-            $store->owner = $customer_order->customer_id;
-            $store->product_id = $customer_order->product_id;
-            $store->order_id = $id;
-            $store->customer_order_id = $customer_order_id;
-            $store->amount = $customer_order->amount_value;
-
-            $customer_order->position = 2;
-
-            $customer_order->lock = 1;
-
-            $customer_order->save();
-
-            $store->save();
-
-        }
-
-        return redirect()->back();
+        return view('admin.orders.delivery_orders.arrived_orders', compact('orders'));
 
     }
+
+    public function arrived_orders_customers($id) {
+
+        $order = order::find($id);
+
+        return view('admin.orders.delivery_orders.arrived_orders_customers', compact('order'));
+
+    }
+
 }

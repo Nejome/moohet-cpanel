@@ -50,7 +50,7 @@
                 <li class="divider"></li>
 
                 <li>
-                    <a class="text-center" href="#">
+                    <a class="text-center" href="{{route('notifications.index')}}">
                         <strong>عرض كافة الإشعارات</strong>
                         <i class="fa fa-angle-left"></i>
                     </a>

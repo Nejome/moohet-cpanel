@@ -79,7 +79,18 @@
             </li>
 
             <li>
-                <a href="{{route('orders.index')}}"><i class="fa fa-truck" aria-hidden="true"></i> الطلبيات</a>
+                <a href="#"><i class="fa fa-truck" aria-hidden="true"></i> الطلبيات<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+
+                    <li>
+                        <a href="{{route('orders.index')}}">عرض الطلبيات</a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('/admin/orders/arrived_orders')}}">توصيل الطلبيات</a>
+                    </li>
+
+                </ul>
             </li>
 
             <li>

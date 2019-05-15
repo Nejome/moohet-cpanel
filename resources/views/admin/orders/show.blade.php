@@ -30,11 +30,6 @@
 
                                 <h1>{{$order->product->name}}</h1>
 
-                                <p class="">
-
-                                    {{$order->product->description}}
-
-                                </p>
 
                                 <div class="row">
 
@@ -126,37 +121,30 @@
 
                         </div>
 
-                        @if($order->lock != 1)
+                        <div class="row">
 
-                            <div class="row">
+                            {{--<div class="text-center col-md-4">
+                                <button class="btn btn-warning" data-toggle="modal" data-target="#myModal">
+                                    تعديل حالة الطلبيه
+                                </button>
+                            </div>--}}
 
-                                <div class="text-center col-md-4">
-                                    <button class="btn btn-warning" data-toggle="modal" data-target="#myModal">
-                                        تعديل حالة الطلبيه
-                                    </button>
-                                </div>
-
-                                @if($order->status == 0)
-
-                                    <div class="text-center col-md-4">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#endDateModal">
-                                            تعديل اخر تاريخ للإنتظار
-                                        </button>
-                                    </div>
-
-                                @endif
-
-                                <div class="text-center col-md-4">
-                                    <button class="btn btn-success" data-toggle="modal" data-target="#arrivalDateModal">
-                                        تعديل زمن الوصول
-                                    </button>
-                                </div>
-
+                            <div class="text-center col-md-4">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#endDateModal">
+                                    تعديل اخر تاريخ للإنتظار
+                                </button>
                             </div>
 
-                        @endif
 
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="text-center col-md-4">
+                                <button class="btn btn-success" data-toggle="modal" data-target="#arrivalDateModal">
+                                    تعديل زمن الوصول
+                                </button>
+                            </div>
+
+                        </div>
+
+                        {{--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -197,7 +185,7 @@
 
                             </div>
 
-                        </div>
+                        </div>--}}
 
                         <div class="modal fade" id="endDateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -293,8 +281,7 @@
                                                 <th class="text-center">إسم العميل</th>
                                                 <th class="text-center">الكمية</th>
                                                 <th class="text-center">نوع التسليم</th>
-                                                <th class="text-center">السعر</th>
-                                                <th class="text-center">العمليات</th>
+                                                <th class="text-center">المبلغ المدفوع</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -319,44 +306,6 @@
 
                                                     </td>
                                                     <td>{{$row->total}} ريال سعودي </td>
-
-                                                    <td>
-
-                                                        @if($order->lock == 0)
-
-                                                            <span class="text-danger">لم تصل الطلبيه بعد</span>
-
-                                                        @else
-
-                                                            @if($row->arrival_type == 1)
-
-                                                                @if($row->position == 1)
-
-                                                                    <span class="text-success">تم الإيصال الي المنزل</span>
-
-                                                                @else
-
-                                                                    <a href="{{url('/admin/orders/'.$order->id.'/change_customers_order_status/'.$row->id)}}" class="btn btn-success">تم التوصيل للمنزل</a>
-
-                                                                @endif
-
-                                                            @elseif($row->arrival_type == 2)
-
-                                                                @if($row->position == 2)
-
-                                                                    <span class="text-primary">تم إيداع الطلبيه في مخازن محيط</span>
-
-                                                                @else
-
-                                                                    <a href="{{url('/admin/orders/'.$order->id.'/change_customers_order_status/'.$row->id)}}" class="btn btn-primary">إيداع في المخزن</a>
-
-                                                                @endif
-
-                                                            @endif
-
-                                                        @endif
-
-                                                    </td>
 
                                                 </tr>
 

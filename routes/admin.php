@@ -29,11 +29,13 @@ Route::get('/products/abb/create', 'AbbProductController@create');
 Route::post('/products/abb/show', 'AbbProductController@show');
 Route::post('/products/abb/store', 'AbbProductController@store');
 
-
+Route::get('/orders/arrived_orders', 'OrderController@arrived_orders');
+Route::get('/orders/arrived_orders_customers/{id}', 'OrderController@arrived_orders_customers');
 Route::resource('orders', 'OrderController');
 Route::post('/orders/{id}/change_status', 'OrderController@change_status');
 
-Route::get('/orders/{id}/change_customers_order_status/{customer_order_id}', 'OrderController@change_customer_order_status');
+Route::get('/customers_orders/{id}/set_arrived', 'CustomerOrderController@set_arrived');
+Route::get('/customers_orders/{id}/add_to_store', 'CustomerOrderController@add_to_store');
 
 Route::get('/financial/charge_operations/{status_filter?}', 'PayTabsTransactionController@charge_operations');
 Route::get('/financial/charge_operations_of/{customer_id}/{status_filter?}', 'PayTabsTransactionController@charge_operations_of');
