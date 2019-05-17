@@ -20,9 +20,9 @@ Route::get('/customers/store/{unverified_customer_id}', 'CustomerController@stor
 
 Route::resource('customers_orders', 'CustomerOrderController');
 
-Route::get('/store/my_products/{id}', 'StoreController@my_products');
-Route::get('/store/my_products/{store_id}/show', 'StoreController@my_products_show');
-Route::post('/store/my_products/{store_id}/change_status', 'StoreController@my_products_change_status');
+Route::get('/my_products/{id}', 'StoreController@my_products');
+Route::get('/my_products/{store_id}/show', 'StoreController@my_products_show');
+Route::post('/my_products/{store_id}/edit', 'StoreController@edit');
 
 /*Google Plus register costumer*/
 Route::get('/register/redirect', 'CustomerController@redirectToProvider');

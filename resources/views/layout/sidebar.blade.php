@@ -39,7 +39,7 @@
             </li>
 
             <li>
-                <a href="{{url('/store/my_products/'.Auth::user()->customer->id)}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> منتجاتي</a>
+                <a href="{{url('/my_products/'.Auth::user()->customer->id)}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> منتجاتي</a>
             </li>
 
             <li>

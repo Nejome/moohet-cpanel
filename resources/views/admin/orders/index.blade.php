@@ -61,7 +61,10 @@
 
                                         </td>
                                         <td class="text-center">{{$order->arrival_date}}</td>
-                                        <td class="text-center"><a href="{{route('orders.show', ['id' => $order->id])}}" class="btn btn-primary">عرض التفاصيل</a></td>
+                                        <td class="text-center">
+                                            <a href="{{route('orders.show', ['id' => $order->id])}}" class="btn btn-primary">عرض التفاصيل</a> |
+                                            <a href="{{url('/admin/orders/arrived_orders_customers/'.$order->id)}}" class="btn btn-success">توصيل الطلبية</a>
+                                        </td>
                                     </tr>
 
                                 @endforeach

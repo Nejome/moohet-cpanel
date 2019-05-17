@@ -19,16 +19,4 @@ class Store extends Model
 
     }
 
-    public function order(){
-
-        return $this->belongsTo('App\Order');
-
-    }
-
-    public function customer_order(){
-
-        return $this->belongsTo('App\Customer_order');
-
-    }
-
 }

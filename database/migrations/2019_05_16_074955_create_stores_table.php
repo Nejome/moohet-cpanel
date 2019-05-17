@@ -15,12 +15,15 @@ class CreateStoresTable extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('owner');
-            $table->integer('product_id');
-            $table->integer('order_id');
-            $table->integer('customer_order_id');
+            $table->unsignedInteger('product_id');
+            $table->unsignedInteger('customer_id');
             $table->integer('amount');
-            $table->integer('status')->default(1);
+            $table->double('selling_price');
+            $table->integer('facebook')->default(1);
+            $table->integer('instagram')->default(1);
+            $table->integer('others')->default(1);
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('customer_id')->references('id')->on('customers');
             $table->timestamps();
         });
     }

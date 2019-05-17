@@ -12,7 +12,7 @@
 
         <div class="row">
 
-            <div class="col-lg-11 col-centered">
+            <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         منتجاتي
@@ -27,21 +27,43 @@
                                     <thead>
                                     <tr>
                                         <th class="text-center">إسم المنتج</th>
-                                        <th class="text-center">تاريخ دخول المخزن</th>
-                                        <th class="text-center">الكمية الاصلية</th>
-                                        <th class="text-center">الكمية المتبقية</th>
-                                        <th class="text-center">التفاصيل</th>
+                                        <th class="text-center">الكمية</th>
+                                        <th class="text-center">سعر البيع</th>
+                                        <th class="text-center">بيع في فيس بوك</th>
+                                        <th class="text-center">بيع في انستجرام</th>
+                                        <th class="text-center">بيع في منصات محيط الاخري</th>
+                                        <th class="text-center">العمليات</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
                                     @foreach($products as $row)
 
-                                        <td>{{$row->product->title}}</td>
-                                        <td>{{$row->created_at}}</td>
-                                        <td>{{$row->customer_order->amount_value}} {{$row->product->less_amount_text}}</td>
-                                        <td>{{$row->amount}} {{$row->product->less_amount_text}}</td>
-                                        <td><a href="{{url('/store/my_products/'.$row->id.'/show')}}" class="text-primary">التفاصيل</a></td>
+                                        <tr>
+
+                                            <td>{{$row->product->name}}</td>
+
+                                            <td>{{$row->amount}}{{$row->product->less_amount_text}}</td>
+
+                                            <td>{{$row->selling_price}}ريال سعودي</td>
+
+                                            <td>
+                                                @if($row->facebook == 1) <span class="text-success">نعم</span> @elseif($row->facebook == 0) <span class="text-danger">لا</span> @endif
+                                            </td>
+
+                                            <td>
+                                                @if($row->instagram == 1) <span class="text-success">نعم</span> @elseif($row->facebook == 0) <span class="text-danger">لا</span> @endif
+                                            </td>
+
+                                            <td>
+                                                @if($row->others == 1) <span class="text-success">نعم</span> @elseif($row->facebook == 0) <span class="text-danger">لا</span> @endif
+                                            </td>
+
+                                            <td>
+                                                <a href="{{url('/my_products/'.$row->id.'/show')}}" class="text-primary">التفاصيل</a>
+                                            </td>
+
+                                        </tr>
 
                                     @endforeach
 

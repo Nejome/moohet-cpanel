@@ -18,6 +18,10 @@
                     <div class="alert alert-info">{{session()->get('arrived_success')}}</div>
                 @endif
 
+                @if(session()->has('added_success'))
+                    <div class="alert alert-info">{{session()->get('added_success')}}</div>
+                @endif
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         اصحاب الطلبية
@@ -71,7 +75,7 @@
 
                                                 @elseif($row->arrival_type == 2)
 
-                                                    <a href="{{url('/admin/customers_orders/'.$row->id.'/add_to_store')}}" class="text-primary">اضافة منتجات العميل بمخازن محيط</a>
+                                                    <a href="{{url('/admin/customers_orders/'.$row->id.'/add_to_store')}}" class="text-primary">اضافة منتجات العميل الي مخازن محيط</a>
 
                                                 @endif
 
