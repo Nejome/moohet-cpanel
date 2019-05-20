@@ -18,18 +18,10 @@ class DatabaseSeeder extends Seeder
             'role' => 1,
         ]);
 
-       /* $this->call([
-            ProductsTableSeeder::class,
+        DB::table('settings')->insert([
+           'name' => 'محيط',
+            'revoke_duration' => 30,
+            'revoke_amount' => 3000
         ]);
-
-        for($i = 1; $i <= 30; $i ++) {
-
-            DB::table('images')->insert([
-                'product_id' => $i,
-                'name' => 'default_products_image.jpg',
-                'url' => asset('images/default_products_image.jpg')
-            ]);
-
-        }*/
     }
 }

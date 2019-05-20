@@ -33,6 +33,10 @@
             </li>
 
             <li>
+                <a href="{{url('/admin/settings')}}"><i class="fa fa-cog"></i> الإعدادات</a>
+            </li>
+
+            <li>
                 <a href="{{url('/customers')}}"><i class="fa fa-users" aria-hidden="true"></i> العملاء</a>
             </li>
 

@@ -18,6 +18,10 @@
         <ul class="dropdown-menu dropdown-user">
 
             <li>
+                <a href="{{url('/admin/settings')}}"><i class="fa fa-cog"></i> الإعدادات</a>
+            </li>
+
+            <li>
                 <a href="{{route('users.edit', Auth::user()->id)}}"><i class="fa fa-user fa-fw"></i>بياناتي</a>
             </li>
 

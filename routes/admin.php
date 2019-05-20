@@ -16,6 +16,9 @@ Route::get('/', function () {
 
 });
 
+Route::get('/settings', 'SettingController@index');
+Route::post('/settings/update', 'SettingController@update');
+
 Route::get('/users/close/{id}', 'UserController@closeAccount');
 Route::get('/users/open/{id}', 'UserController@openAccount');
 Route::resource('users', 'UserController');
