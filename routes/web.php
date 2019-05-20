@@ -28,7 +28,7 @@ Route::post('/my_products/{store_id}/edit', 'StoreController@edit');
 Route::get('/register/redirect', 'CustomerController@redirectToProvider');
 Route::get('/register/callback', 'CustomerController@handleProviderCallback');
 
-
+/*Wallet info*/
 Route::get('/my_wallet/{customer_id}', 'WalletInformationController@show');
 
 /*Charge Balance*/
@@ -57,3 +57,9 @@ Route::get('/password_reset/complete', 'PasswordResetController@complete');
 
 /*Notification*/
 Route::resource('notifications', 'NotificationController');
+
+/*Revoke money*/
+Route::get('/revoke_orders/create', 'RevokeOrderController@create');
+Route::post('/revoke_orders/store', 'RevokeOrderController@store');
+Route::get('/revoke_orders', 'RevokeOrderController@index');
+Route::get('/revoke_orders/completed', 'RevokeOrderController@completed');

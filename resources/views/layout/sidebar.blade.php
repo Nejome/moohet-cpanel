@@ -66,6 +66,29 @@
                 </ul>
             </li>
 
+            <li>
+                <a href="#">
+                    <i class="fa fa-money"></i>
+                    سحب رصيد
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+
+                    <li>
+                        <a href="{{url('/revoke_orders')}}">قائمة الطلبات</a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('/revoke_orders/create')}}">انشاء طلب جديد</a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('/revoke_orders/completed')}}">الطلبات المكتملة</a>
+                    </li>
+
+                </ul>
+            </li>
+
         </ul>
     </div>
 
