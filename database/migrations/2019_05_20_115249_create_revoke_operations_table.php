@@ -19,7 +19,7 @@ class CreateRevokeOperationsTable extends Migration
             $table->string('sender_account_number');
             $table->string('transaction_id');
             $table->date('transaction_date');
-            $table->foreign('revoke_order_id')->references('id')->on('revoke_orders');
+            $table->foreign('revoke_order_id')->references('id')->on('revoke_orders')->onDelete('cascade');
             $table->timestamps();
         });
     }

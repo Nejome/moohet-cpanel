@@ -63,3 +63,6 @@ Route::get('/revoke_orders/create', 'RevokeOrderController@create');
 Route::post('/revoke_orders/store', 'RevokeOrderController@store');
 Route::get('/revoke_orders', 'RevokeOrderController@index');
 Route::get('/revoke_orders/completed', 'RevokeOrderController@completed');
+Route::get('/revoke_orders/{id}/edit', 'RevokeOrderController@edit');
+Route::post('/revoke_orders/{id}/update', 'RevokeOrderController@update');
+Route::get('/revoke_orders/{id}/delete', 'RevokeOrderController@delete');

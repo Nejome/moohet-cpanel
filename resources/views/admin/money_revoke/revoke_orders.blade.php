@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('admin.layout.master')
 
 @section('content')
 
@@ -22,7 +22,7 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        طلباتي
+                        الطلبات الجديدة
                     </div>
 
                     <div class="panel-body">
@@ -33,6 +33,7 @@
                                 <table class="table table-striped table-bordered table-hover text-center">
                                     <thead>
                                     <tr>
+                                        <th class="text-center">العميل</th>
                                         <th class="text-center">المبلغ</th>
                                         <th class="text-center">البنك</th>
                                         <th class="text-center">الفرع</th>
@@ -47,7 +48,9 @@
 
                                         <tr>
 
-                                            <td>{{$order->amount}}</td>
+                                            <td>{{$order->customer->name}}</td>
+
+                                            <td>{{$order->amount}} ريال سعودي</td>
 
                                             <td>{{$order->bank}}</td>
 
@@ -65,19 +68,7 @@
 
                                             <td>
 
-                                                @if($order->showed == 0)
-
-                                                    <a href="{{url('/revoke_orders/'.$order->id.'/edit')}}" class="text-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;
-
-                                                |
-
-                                                    &nbsp;<a href="{{url('/revoke_orders/'.$order->id.'/delete')}}" class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                                @else
-
-                                                    -
-
-                                                @endif
+                                                <a href="#" class="text-primary">ارسال تفاصيل الحوالة</a>
 
                                             </td>
 
@@ -91,7 +82,7 @@
 
                         @else
 
-                            <h1>لا توجد لديك طلبات سحب رصيد جديدة</h1>
+                            <h1>لا توجد طلبات سحب رصيد جديدة</h1>
 
                         @endif
 

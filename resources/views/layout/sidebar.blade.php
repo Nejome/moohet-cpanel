@@ -75,7 +75,7 @@
                 <ul class="nav nav-second-level">
 
                     <li>
-                        <a href="{{url('/revoke_orders')}}">قائمة الطلبات</a>
+                        <a href="{{url('/revoke_orders')}}"> الطلبات الحالية</a>
                     </li>
 
                     <li>

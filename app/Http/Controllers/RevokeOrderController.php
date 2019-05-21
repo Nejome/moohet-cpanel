@@ -14,7 +14,7 @@ class RevokeOrderController extends Controller
 
     public function index() {
 
-        $orders = RevokeOrder::where('customer_id', Auth::user()->customer->id)->get();
+        $orders = RevokeOrder::where(['customer_id' => Auth::user()->customer->id, 'complete' => 0])->get();
 
         return view('revoke_orders.index', compact('orders'));
 
@@ -64,7 +64,7 @@ class RevokeOrderController extends Controller
             $order->save();
 
             //set flash message and redirect to revoke orders index
-            session()->flash('order_created', 'تم انشاء طلب السحب الجديد بنجاح');
+            session()->flash('order_created', 'تم انشاء طلب سحب رصيد بنجاح');
             return redirect(url('/revoke_orders'));
 
         }elseif($wallet->current_balance > $setting->revoke_amount && $wallet->last_balance_conversion != null) {
@@ -108,7 +108,63 @@ class RevokeOrderController extends Controller
 
     public function completed() {
 
+        $orders = RevokeOrder::where(['customer_id' => Auth::user()->customer->id, 'complete' => 1])->get();
 
+        return view('revoke_orders.complete', compact('orders'));
+
+    }
+
+    public function edit($id) {
+
+        $order = RevokeOrder::findOrFail($id);
+
+        return view('revoke_orders.edit', compact('order'));
+
+    }
+
+    public function update(Request $request, $id) {
+
+        $wallet = Wallet_information::where('customer_id', Auth::user()->customer->id)->first();
+        $order  = RevokeOrder::findOrFail($id);
+
+        //validate the data
+        $messages = [
+            'amount.required' => 'عفوا قم بإدخال المبلغ',
+            'amount.numeric' => 'عفوا قم بإدخال قيمة صحيحة للمبلغ',
+            'amount.max' => 'عفوا انت لا تملك هذا القدر من المبلغ في محفظتك في محيط',
+            'account_number.required' => 'عفوا قم بإدخال رقم الحساب',
+            'account_number.integer' => 'عفوا قم بإدخال رقم حساب صحيح',
+            'bank.required' => 'عفوا قم بإدخال اسم البنك',
+            'branch.required' => 'عفوا قم بإدخال اسم الفرع'
+        ];
+
+        $this->validate($request, [
+            'amount' => 'required|numeric|max:'.$wallet->current_balance,
+            'account_number' => 'required|integer',
+            'bank' => 'required',
+            'branch' => 'required'
+        ], $messages);
+
+
+        $order->amount = $request->amount;
+        $order->bank = $request->bank;
+        $order->branch = $request->branch;
+        $order->account_number = $request->account_number;
+        $order->notes = $request->notes;
+        $order->save();
+
+        session()->flash('updated_success', 'تم تعديل الطلب بنجاح');
+        return redirect(url('/revoke_orders'));
+
+    }
+
+    public function delete($id) {
+
+        RevokeOrder::findOrFail($id)->delete();
+
+        session()->flash('deleted_success', 'تم حذف الطلب بنجاح');
+
+        return redirect(url('/revoke_orders'));
 
     }
 

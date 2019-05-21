@@ -65,19 +65,9 @@
 
                                             <td>
 
-                                                @if($order->showed == 0)
+                                                -
 
-                                                    <a href="{{url('/revoke_orders/'.$order->id.'/edit')}}" class="text-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;
-
-                                                |
-
-                                                    &nbsp;<a href="{{url('/revoke_orders/'.$order->id.'/delete')}}" class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                                @else
-
-                                                    -
-
-                                                @endif
+                                                {{--<a href="{{url('/revoke_orders/'.$order->id.'/delete')}}" class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>--}}
 
                                             </td>
 
@@ -91,7 +81,7 @@
 
                         @else
 
-                            <h1>لا توجد لديك طلبات سحب رصيد جديدة</h1>
+                            <h1>لا توجد لديك طلبات سحب رصيد مكتملة  حتي الان</h1>
 
                         @endif
 

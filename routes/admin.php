@@ -54,3 +54,6 @@ Route::resource('messages', 'MessageController');
 Route::get('/notifications', 'admin\AdminNotificationController@index');
 Route::get('/notifications/{notification}/show', 'admin\AdminNotificationController@show');
 Route::get('/notifications/{notification}/delete', 'admin\AdminNotificationController@destroy');
+
+//money revoke
+Route::get('/money_revoke/orders', 'admin\MoneyRevokeController@revoke_orders');

@@ -105,6 +105,10 @@
                         <a href="{{url('/admin/financial/charge_operations')}}">معاملات شحن الرصيد</a>
                     </li>
 
+                    <li>
+                        <a href="{{url('/admin/money_revoke/orders')}}">طلبات سحب الرصيد</a>
+                    </li>
+
                 </ul>
             </li>
 

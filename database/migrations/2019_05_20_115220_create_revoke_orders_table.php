@@ -22,6 +22,7 @@ class CreateRevokeOrdersTable extends Migration
             $table->string('account_number');
             $table->text('notes')->nullable();
             $table->integer('complete')->default(0);
+            $table->integer('showed')->default(0);
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->timestamps();
         });
