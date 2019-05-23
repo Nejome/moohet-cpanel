@@ -105,8 +105,19 @@
                         <a href="{{url('/admin/financial/charge_operations')}}">معاملات شحن الرصيد</a>
                     </li>
 
+                </ul>
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-money" aria-hidden="true"></i> طلبات سحب الرصيد<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+
                     <li>
-                        <a href="{{url('/admin/money_revoke/orders')}}">طلبات سحب الرصيد</a>
+                        <a href="{{url('/admin/money_revoke/orders')}}">الطلبات الجديدة</a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('/admin/money_revoke/processed_orders')}}">الطلبات المكتملة</a>
                     </li>
 
                 </ul>

@@ -14,11 +14,7 @@
 
             <div class="col-lg-12">
 
-                @if(session()->has('order_created')) <div class="alert alert-info">{{session()->get('order_created')}}</div> @endif
-
-                @if(session()->has('updated_success')) <div class="alert alert-warning">{{session()->get('updated_success')}}</div> @endif
-
-                @if(session()->has('deleted_success')) <div class="alert alert-danger">{{session()->get('deleted_success')}}</div> @endif
+                @if(session()->has('sent_to_trash')) <div class="alert alert-danger">{{session()->get('sent_to_trash')}}</div> @endif
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -36,8 +32,11 @@
                                         <th class="text-center">المبلغ</th>
                                         <th class="text-center">البنك</th>
                                         <th class="text-center">الفرع</th>
-                                        <th class="text-center">رقم الحساب</th>
-                                        <th class="text-center">ملاحظات</th>
+                                        <th class="text-center">رقم حسابي</th>
+                                        <th class="text-center">ملاحظاتي</th>
+                                        <th class="text-center">رقم حساب المرسل</th>
+                                        <th class="text-center">رقم العملية</th>
+                                        <th class="text-center">تاريخ العملية</th>
                                         <th class="text-center">العمليات</th>
                                     </tr>
                                     </thead>
@@ -47,7 +46,7 @@
 
                                         <tr>
 
-                                            <td>{{$order->amount}}</td>
+                                            <td>{{$order->amount}} ريال سعودي</td>
 
                                             <td>{{$order->bank}}</td>
 
@@ -63,11 +62,15 @@
                                                 @endif
                                             </td>
 
+                                            <td>{{$order->revoke_operation->sender_account_number}}</td>
+
+                                            <td>{{$order->revoke_operation->transaction_id}}</td>
+
+                                            <td>{{$order->revoke_operation->transaction_date}}</td>
+
                                             <td>
 
-                                                -
-
-                                                {{--<a href="{{url('/revoke_orders/'.$order->id.'/delete')}}" class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>--}}
+                                                <a href="{{url('/revoke_orders/'.$order->id .'/delete')}}" class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 
                                             </td>
 
@@ -81,7 +84,7 @@
 
                         @else
 
-                            <h1>لا توجد لديك طلبات سحب رصيد مكتملة  حتي الان</h1>
+                            <h1>لا توجد لديك طلبات سحب رصيد مكتملة</h1>
 
                         @endif
 

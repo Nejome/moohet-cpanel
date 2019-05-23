@@ -13,4 +13,17 @@ class RevokeOrder extends Model
 
     }
 
+    public function showed(){
+
+        $this->showed = 1;
+        $this->save();
+
+    }
+
+    public function revoke_operation() {
+
+        return $this->hasOne('App\RevokeOperation');
+
+    }
+
 }

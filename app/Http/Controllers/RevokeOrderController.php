@@ -51,7 +51,7 @@ class RevokeOrderController extends Controller
 
 
         //check if customer allowed to create revoke order
-        if($wallet->current_balance > $setting->revoke_amount && $wallet->last_balance_conversion == null){
+        if($wallet->current_balance >= $setting->revoke_amount && $wallet->last_balance_conversion == null){
 
             //create the order
             $order  = new RevokeOrder;
@@ -67,7 +67,7 @@ class RevokeOrderController extends Controller
             session()->flash('order_created', 'تم انشاء طلب سحب رصيد بنجاح');
             return redirect(url('/revoke_orders'));
 
-        }elseif($wallet->current_balance > $setting->revoke_amount && $wallet->last_balance_conversion != null) {
+        }elseif($wallet->current_balance >= $setting->revoke_amount && $wallet->last_balance_conversion != null) {
 
             $today = Carbon::today();
 
@@ -108,7 +108,7 @@ class RevokeOrderController extends Controller
 
     public function completed() {
 
-        $orders = RevokeOrder::where(['customer_id' => Auth::user()->customer->id, 'complete' => 1])->get();
+        $orders = RevokeOrder::where(['customer_id' => Auth::user()->customer->id, 'complete' => 1, 'trash' => 0])->get();
 
         return view('revoke_orders.complete', compact('orders'));
 
@@ -160,11 +160,19 @@ class RevokeOrderController extends Controller
 
     public function delete($id) {
 
-        RevokeOrder::findOrFail($id)->delete();
+        $order = RevokeOrder::findOrFail($id);
 
-        session()->flash('deleted_success', 'تم حذف الطلب بنجاح');
+        if($order->admin_trash == 1){
+            $order->delete();
+        }else {
+            $order->trash = 1;
+            $order->save();
+        }
 
-        return redirect(url('/revoke_orders'));
+
+        session()->flash('sent_to_trash', 'تم حذف الطلبية بنجاح');
+
+        return redirect(url('/revoke_orders/completed'));
 
     }
 

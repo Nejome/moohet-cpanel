@@ -14,9 +14,13 @@
 
             <div class="col-lg-12">
 
+                @if(session()->has('process_complete')) <div class="alert alert-info">{{session()->get('process_complete')}}</div> @endif
+
+                @if(session()->has('order_deleted')) <div class="alert alert-danger">{{session()->get('order_deleted')}}</div> @endif
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        الطلبات الجديدة
+                        الطلبات المكتمله
                     </div>
 
                     <div class="panel-body">
@@ -31,7 +35,10 @@
                                         <th class="text-center">المبلغ</th>
                                         <th class="text-center">البنك</th>
                                         <th class="text-center">الفرع</th>
-                                        <th class="text-center">رقم الحساب</th>
+                                        <th class="text-center">رقم حساب العميل</th>
+                                        <th class="text-center">رقم حساب المرسل</th>
+                                        <th class="text-center">رقم الحوالة</th>
+                                        <th class="text-center">تاريخ الحوالة</th>
                                         <th class="text-center">ملاحظات</th>
                                         <th class="text-center">العمليات</th>
                                     </tr>
@@ -52,6 +59,12 @@
 
                                             <td>{{$order->account_number}}</td>
 
+                                            <td>{{$order->revoke_operation->sender_account_number}}</td>
+
+                                            <td>{{$order->revoke_operation->transaction_id}}</td>
+
+                                            <td>{{$order->revoke_operation->transaction_date}}</td>
+
                                             <td>
                                                 @if($order->notes == null)
                                                     لا توجد
@@ -62,7 +75,7 @@
 
                                             <td>
 
-                                                <a href="{{url('/admin/money_revoke/'.$order->id.'/process_order')}}" class="text-primary">ارسال تفاصيل الحوالة</a>
+                                                <a href="{{url('/admin/money_revoke/'.$order->id.'/delete_order')}}" class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 
                                             </td>
 
@@ -76,7 +89,7 @@
 
                         @else
 
-                            <h1>لا توجد طلبات سحب رصيد جديدة</h1>
+                            <h1>لا توجد طلبات سحب رصيد مكتملة</h1>
 
                         @endif
 

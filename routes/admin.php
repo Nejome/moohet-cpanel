@@ -57,3 +57,7 @@ Route::get('/notifications/{notification}/delete', 'admin\AdminNotificationContr
 
 //money revoke
 Route::get('/money_revoke/orders', 'admin\MoneyRevokeController@revoke_orders');
+Route::get('/money_revoke/{id}/process_order', 'admin\MoneyRevokeController@process_order');
+Route::post('/money_revoke/{id}/store_revoke_operation', 'admin\MoneyRevokeController@store_revoke_operation');
+Route::get('/money_revoke/processed_orders', 'admin\MoneyRevokeController@processed_orders');
+Route::get('/money_revoke/{id}/delete_order', 'admin\MoneyRevokeController@delete_order');
