@@ -61,7 +61,7 @@
                         <a href="{{url('/admin/products/abb/create')}}">منتجات 1688</a>
                     </li>
 
-                    <li class="">
+                    <li>
 
                         <a href="#">الفئات والتصنيفات<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level collapse" style="height: 0px;">
