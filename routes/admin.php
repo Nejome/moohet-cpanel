@@ -23,14 +23,15 @@ Route::get('/users/close/{id}', 'UserController@closeAccount');
 Route::get('/users/open/{id}', 'UserController@openAccount');
 Route::resource('users', 'UserController');
 
+Route::get('/products/abb', 'AbbProductController@index');
+Route::get('/products/abb/create', 'AbbProductController@create');
+Route::post('/products/abb/show', 'AbbProductController@show');
+Route::post('/products/abb/store', 'AbbProductController@store');
+
 Route::get('/products/trash', 'ProductController@trash');
 Route::get('/products/trash/{id}/recovery', 'ProductController@recovery');
 Route::resource('products', 'ProductController');
 Route::get('/products/{id}/delete', 'ProductController@destroy');
-
-Route::get('/products/abb/create', 'AbbProductController@create');
-Route::post('/products/abb/show', 'AbbProductController@show');
-Route::post('/products/abb/store', 'AbbProductController@store');
 
 Route::get('/orders/arrived_orders', 'OrderController@arrived_orders');
 Route::get('/orders/arrived_orders_customers/{id}', 'OrderController@arrived_orders_customers');

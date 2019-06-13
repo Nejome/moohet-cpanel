@@ -12,6 +12,14 @@ use File;
 class AbbProductController extends Controller
 {
 
+    public function index() {
+
+        $products = Product::whereNotNull('abb_category_id')->get();
+
+        return view('admin.products.abb.index', compact('products'));
+
+    }
+
     public function create() {
 
         return view('admin.products.abb.create');

@@ -58,8 +58,7 @@
                     </li>
 
                     <li>
-                        <a href="#"> ادارة منتجات 1688</a> 
-                        <!-- {{url('/admin/products/abb/create')}} -->
+                        <a href="{{url('/admin/products/abb')}}"> ادارة منتجات 1688</a>
                     </li>
 
 

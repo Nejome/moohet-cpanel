@@ -6,7 +6,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">قائمة المنتجات</h1>
+                <h1 class="page-header">قائمة منتجات 1688</h1>
             </div>
         </div>
 
@@ -14,31 +14,13 @@
 
             <div class="col-lg-12 col-centered">
 
-                @if(session()->has('success_msg'))
+                {{--@if(session()->has('success_msg'))
 
                     <div class="alert alert-success">{{session()->get('success_msg')}}</div>
 
-                @endif
+                @endif--}}
 
-                @if(session()->has('update_msg'))
-
-                    <div class="alert alert-warning">{{session()->get('update_msg')}}</div>
-
-                @endif
-
-                @if(session()->has('trash_msg'))
-
-                    <div class="alert alert-danger">{{session()->get('trash_msg')}}</div>
-
-                @endif
-
-                    @if(session()->has('recovery_msg'))
-
-                        <div class="alert alert-info">{{session()->get('recovery_msg')}}</div>
-
-                    @endif
-
-                    <a href="{{route('products.create')}}" class="btn btn btn-success add_button">اضافة منتج جديد</a>
+                    <a href="{{url('/admin/products/abb/create')}}" class="btn btn btn-success add_button">البحث عن منتج جديد</a>
 
                     <a href="{{url('/admin/products/trash')}}" class="btn btn btn-danger trash_button">سلة المحذوفات</a>
 
