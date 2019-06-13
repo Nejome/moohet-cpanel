@@ -58,29 +58,25 @@
                     </li>
 
                     <li>
-                        <a href="{{url('/admin/products/abb/create')}}">منتجات 1688</a>
+                        <a href="#"> ادارة منتجات 1688</a> 
+                        <!-- {{url('/admin/products/abb/create')}} -->
                     </li>
 
-                    <li>
-
-                        <a href="#">الفئات والتصنيفات<span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level collapse" style="height: 0px;">
-
-                            <li>
-                                <a href="{{route('categories.index')}}">ادارة الفئات</a>
-                            </li>
-
-                            <li>
-                                <a href="{{route('sub_categories.index')}}">ادارة التصنيفات الفرعية</a>
-                            </li>
-
-                        </ul>
-
-                    </li>
 
                 </ul>
 
             </li>
+
+            <li>
+                <a href="#"><i class="fa fa-file-text-o" aria-hidden="true"></i>التصنيفات<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+
+                <li><a href="{{route('categories.index')}}">ادارة الفئات</a> </li>
+
+                <li><a href="{{route('sub_categories.index')}}">ادارة التصنيفات الفرعية</a></li>     
+
+                </ul>
+            <li>
 
             <li>
                 <a href="#"><i class="fa fa-truck" aria-hidden="true"></i> الطلبيات<span class="fa arrow"></span></a>
