@@ -56,11 +56,8 @@ class AbbProductController extends Controller
         $product['price'] = (string)$xml->OtapiItemFullInfo->Price->ConvertedPriceWithoutSign;
         $product['company'] = (string)$xml->OtapiItemFullInfo->ProviderType;
         $product['company_url'] = (string)$xml->OtapiItemFullInfo->ExternalItemUrl;
-        $product['images'][0]['url'] = (string)$xml->OtapiItemFullInfo->Pictures->ItemPicture[0]->Medium;
-        $product['images'][1]['url'] = (string)$xml->OtapiItemFullInfo->Pictures->ItemPicture[1]->Medium;
-        $product['images'][2]['url'] = (string)$xml->OtapiItemFullInfo->Pictures->ItemPicture[2]->Medium;
-        $product['images'][3]['url'] = (string)$xml->OtapiItemFullInfo->Pictures->ItemPicture[3]->Medium;
-        $product['primary_code'] = (string)$xml->OtapiItemFullInfo->ExternalCategoryId;
+        $product['primary_code'] = (string)$xml->OtapiItemFullInfo->Id;
+        $product['category_id'] = (string)$xml->OtapiItemFullInfo->CategoryId;
 
         /*dd($product);*/
 
@@ -72,16 +69,10 @@ class AbbProductController extends Controller
 
     public function store(Request $request) {
 
-        $product = new Product;
-        $image1 = new Image;
-        $image2 = new Image;
-        $image3 = new Image;
-        $image4 = new Image;
+        $product = Product::find(2);
 
-        //validation
+        /*//validation
         $messages = [
-            'primary_code.required' => 'عفوا قم بإدخال الرمز الاساسي',
-            'primary_code.numeric' => 'عفوا قم يإدخال رمز اساسي صحيح',
             'secondary_code.required' => 'عفوا قم بإدخال الرمز الفرعي',
             'secondary_code.numeric' => 'عفوا قم بإدخال رمز فرعي صحيح',
             'tariff_code.required' => 'عفوا قم بإدخال رمز التعريفة الجمركية',
@@ -106,7 +97,6 @@ class AbbProductController extends Controller
         ];
 
         $this->validate($request, [
-            'primary_code' => 'required|numeric',
             'secondary_code' => 'required|numeric',
             'tariff_code' => 'required',
             'name' => 'required',
@@ -141,44 +131,33 @@ class AbbProductController extends Controller
         $product->size_value = $request->size_value;
         $product->color = $request->color;
         $product->active = $request->active;
+        $product->show_with_products = 0;
+        $product->abb_id = $request->primary_code;
+        $product->abb_category_id = $request->category_id;
 
-        $product->save();
+        $product->save();*/
 
-        //store product images
+        $client = new Client;
 
-        $image1_name = time().'1'.$product->id.'.jpg';
-        File::put(public_path() . '/images/' . $image1_name, file_get_contents($request->image1));
-        $image1->name = $image1_name;
-        $image1->url = asset('images/'.$image1_name);
-        $image1->product_id = $product->id;
-        $image1->save();
+        $result = $client->post('http://otapi.net/OtapiWebService2.asmx/GetItemFullInfo', [
+            'headers' => [
+                'Accept'     => 'application/xml',
+            ],
 
-        $image2_name = time().'2'.$product->id.'.jpg';
-        File::put(public_path() . '/images/' . $image2_name, file_get_contents($request->image2));
-        $image2->name = $image2_name;
-        $image2->url = asset('images/'.$image2_name);
-        $image2->product_id = $product->id;
-        $image2->save();
+            'form_params' => [
+                'instanceKey' => env('OTA_API_KEY'),
+                'language' => 'en',
+                'itemId' => $product->abb_id,
+            ]
 
-        $image3_name = time().'3'.$product->id.'.jpg';
-        File::put(public_path() . '/images/' . $image3_name, file_get_contents($request->image3));
-        $image3->name = $image3_name;
-        $image3->url = asset('images/'.$image3_name);
-        $image3->product_id = $product->id;
-        $image3->save();
+        ]);
 
-        $image4_name = time().'4'.$product->id.'.jpg';
-        File::put(public_path() . '/images/' . $image4_name, file_get_contents($request->image4));
-        $image4->name = $image4_name;
-        $image4->url = asset('images/'.$image4_name);
-        $image4->product_id = $product->id;
-        $image4->save();
+        $xml = new \SimpleXMLElement($result->getBody()->getContents());
 
-
-        session()->flash('success_msg', 'تمت إضافة المنتج الجديد بنجاح');
+        $images = $xml->OtapiItemFullInfo->Pictures->ItemPicture;
 
         //redirect to products list
-        return redirect(route('products.index'));
+        return view('admin.products.images.index', compact(['images', 'product']));
 
     }
 

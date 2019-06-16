@@ -24,7 +24,7 @@
 
                     <div class="panel-body row" style="padding: 40px;">
 
-                        <form method="POST" action="{{url('/admin/products/abb/store')}}" enctype="multipart/form-data" role="form" class="col-md-10">
+                        <form method="POST" action="{{url('/admin/products/abb/store')}}" role="form" class="col-md-10">
 
                             {{csrf_field()}}
 
@@ -96,7 +96,10 @@
 
                                     <label class="custom_form_label">رمز المنتج الاساسي</label>
 
-                                    <input name="primary_code" value="{{$product['primary_code']}}" type="text" class="form-control">
+                                    <input value="{{$product['primary_code']}}" class="form-control" disabled>
+
+                                    <input type="hidden" name="primary_code" value="{{$product['primary_code']}}">
+                                    <input type="hidden" name="category_id" value="{{$product['category_id']}}">
 
                                     <span class="text-danger">{{$errors->first('primary_code')}}</span>
 
@@ -282,71 +285,9 @@
 
                             <hr>
 
-                            <div class="row">
-
-                                <div class="col-md-12">
-
-                                    <h4 style="text-decoration: underline; font-weight: bold">صور المنتج</h4>
-
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-
-                                <div class="form-group col-md-6">
-
-                                    <label class="custom_form_label"> صورة 1</label>
-
-                                    <img src="{{$product['images'][0]['url']}}" width="100%" height="300px;" style="margin-bottom: 10px;">
-
-                                    <input name="image1" type="hidden" value="{{$product['images'][0]['url']}}">
-
-{{--                                    <input type="file" name="image1" class="form-control">--}}
-
-{{--                                    <span class="text-danger">{{$errors->first('image1')}}</span>--}}
-
-                                </div>
-
-                                <div class="form-group col-md-6">
-
-                                    <label class="custom_form_label">صورة 2</label>
-
-                                    <img src="{{$product['images'][1]['url']}}" width="100%" height="300px;" style="margin-bottom: 10px;">
-
-                                    <input name="image2" type="hidden" value="{{$product['images'][1]['url']}}">
-
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-
-                                <div class="form-group col-md-6">
-
-                                    <label class="custom_form_label"> صورة 3</label>
-
-                                    <img src="{{$product['images'][2]['url']}}" width="100%" height="300px;" style="margin-bottom: 10px;">
-
-                                    <input name="image3" type="hidden" value="{{$product['images'][2]['url']}}">
-
-                                </div>
-
-                                <div class="form-group col-md-6">
-
-                                    <label class="custom_form_label">صورة 4</label>
-
-                                    <img src="{{$product['images'][3]['url']}}" width="100%" height="300px;" style="margin-bottom: 10px;">
-
-                                    <input name="image4" type="hidden" value="{{$product['images'][3]['url']}}">
-
-                                </div>
-
-                            </div>
-
                             <div class="text-center">
 
-                                <button type="submit" class="btn btn-primary">إضافة</button>
+                                <button type="submit" class="btn btn-primary">الخطوة التالية</button>
 
                             </div>
 

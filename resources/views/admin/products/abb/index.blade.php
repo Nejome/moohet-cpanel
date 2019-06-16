@@ -22,7 +22,7 @@
 
                     <a href="{{url('/admin/products/abb/create')}}" class="btn btn btn-success add_button">البحث عن منتج جديد</a>
 
-                    <a href="{{url('/admin/products/trash')}}" class="btn btn btn-danger trash_button">سلة المحذوفات</a>
+                    {{--<a href="{{url('/admin/products/trash')}}" class="btn btn btn-danger trash_button">سلة المحذوفات</a>--}}
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
