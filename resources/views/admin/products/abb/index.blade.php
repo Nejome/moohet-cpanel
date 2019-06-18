@@ -20,7 +20,7 @@
 
                 @endif--}}
 
-                    <a href="{{url('/admin/products/abb/create')}}" class="btn btn btn-success add_button">البحث عن منتج جديد</a>
+                    <a href="{{url('products')}}" class="btn btn btn-success add_button">البحث عن منتج جديد</a>
 
                     {{--<a href="{{url('/admin/products/trash')}}" class="btn btn btn-danger trash_button">سلة المحذوفات</a>--}}
 
@@ -64,7 +64,11 @@
                                         </td>
                                         <td class="text-center">{{$product->company}}</td>
                                         <td class="text-center">{{$product->price}} ريال سعودي</td>
-                                        <td class="text-center"><a onclick="remove('{{$product->name}}', '{{url('/admin/products/'.$product->id.'/delete')}}')" href="#" class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a> | <a href="{{route('products.edit', ['id' => $product->id])}}" class="text-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                        <td class="text-center">
+                                            <a href="{{url('/admin/products/'.$product->id.'/images')}}" class="text-success"><i class="fa fa-picture-o" aria-hidden="true"></i></a> |
+                                            <a href="{{route('products.edit', ['id' => $product->id])}}" class="text-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> |
+                                            <a onclick="remove('{{$product->name}}', '{{url('/admin/products/'.$product->id.'/delete')}}')" href="#" class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                        </td>
                                     </tr>
 
                                 @endforeach

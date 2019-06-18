@@ -42,7 +42,7 @@ class AbbProductController extends Controller
             'form_params' => [
                 'instanceKey' => env('OTA_API_KEY'),
                 'language' => 'en',
-                'itemId' => 'abb-'.$request->item_id,
+                'itemId' => 'products-'.$request->item_id,
             ]
 
         ]);
@@ -69,9 +69,9 @@ class AbbProductController extends Controller
 
     public function store(Request $request) {
 
-        $product = Product::find(2);
+        $product = new Product;
 
-        /*//validation
+        //validation
         $messages = [
             'secondary_code.required' => 'عفوا قم بإدخال الرمز الفرعي',
             'secondary_code.numeric' => 'عفوا قم بإدخال رمز فرعي صحيح',
@@ -135,7 +135,7 @@ class AbbProductController extends Controller
         $product->abb_id = $request->primary_code;
         $product->abb_category_id = $request->category_id;
 
-        $product->save();*/
+        $product->save();
 
         $client = new Client;
 
@@ -154,7 +154,25 @@ class AbbProductController extends Controller
 
         $xml = new \SimpleXMLElement($result->getBody()->getContents());
 
-        $images = $xml->OtapiItemFullInfo->Pictures->ItemPicture;
+        $abb_product_images = $xml->OtapiItemFullInfo->Pictures->ItemPicture;
+
+        //store products images
+
+        foreach($abb_product_images as $image){
+
+            $product_image_content = file_get_contents($image->Medium);
+            $product_image_name = time().'.jpg';
+            File::put(public_path().'/images/products/'.$product_image_name, $product_image_content);
+
+            $product_image = new Image;
+            $product_image->product_id = $product->id;
+            $product_image->name = $product_image_name;
+            $product_image->url = asset('images/products/'.$product_image_name);
+            $product_image->save();
+
+        }
+
+        $images = Image::where('product_id', $product->id)->get();
 
         //redirect to products list
         return view('admin.products.images.index', compact(['images', 'product']));

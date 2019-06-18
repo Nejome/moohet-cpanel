@@ -27,11 +27,16 @@ Route::get('/products/abb', 'AbbProductController@index');
 Route::get('/products/abb/create', 'AbbProductController@create');
 Route::post('/products/abb/show', 'AbbProductController@show');
 Route::post('/products/abb/store', 'AbbProductController@store');
+Route::get('/products/{id}/images', 'ImageController@index');
+Route::get('/images/{id}/delete', 'ImageController@delete');
+Route::post('/images/store/{product_id}', 'ImageController@store');
 
 Route::get('/products/trash', 'ProductController@trash');
 Route::get('/products/trash/{id}/recovery', 'ProductController@recovery');
 Route::resource('products', 'ProductController');
 Route::get('/products/{id}/delete', 'ProductController@destroy');
+Route::get('/products/{id}/reset_images', 'ImageController@reset_abb_product_images');
+
 
 Route::get('/orders/arrived_orders', 'OrderController@arrived_orders');
 Route::get('/orders/arrived_orders_customers/{id}', 'OrderController@arrived_orders_customers');
