@@ -17,7 +17,6 @@ class AddAbbInfoToProductsTable extends Migration
             $table->string('abb_id')->nullable();
             $table->string('abb_category_id')->nullable();
             $table->integer('show_with_products')->default(1);
-            $table->integer('data_complete')->default(0);
         });
     }
 

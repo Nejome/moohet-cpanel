@@ -12,7 +12,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::where('trash', 0)->get();
+        $products = Product::where(['trash' => 0, 'show_with_products' => 1])->get();
 
         return view('admin.products.index', compact('products'));
     }

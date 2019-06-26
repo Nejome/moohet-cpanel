@@ -179,4 +179,24 @@ class AbbProductController extends Controller
 
     }
 
+    public function change_status($id) {
+
+        $product = Product::findOrFail($id);
+
+        if($product->show_with_products == 1){
+
+            $product->show_with_products = 0;
+
+        }else {
+
+            $product->show_with_products = 1;
+
+        }
+
+        $product->save();
+
+        return redirect(url('/admin/products/abb'));
+
+    }
+
 }

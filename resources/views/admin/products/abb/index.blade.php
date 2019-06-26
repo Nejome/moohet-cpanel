@@ -39,6 +39,7 @@
                                     <th class="text-center">الحالة</th>
                                     <th class="text-center">البائع</th>
                                     <th class="text-center">السعر</th>
+                                    <th class="text-center">عرض في قائمة المنتجات</th>
                                     <th class="text-center">العمليات</th>
                                 </tr>
                                 </thead>
@@ -48,7 +49,9 @@
 
                                     <tr>
                                         <td class="text-center">{{$product->name}}</td>
+
                                         <td class="text-center">{{$product->sub_category->parent_category->title}} - {{$product->sub_category->title}}</td>
+
                                         <td>
 
                                             @if($product->active == 1)
@@ -62,13 +65,36 @@
                                             @endif
 
                                         </td>
+
                                         <td class="text-center">{{$product->company}}</td>
+
                                         <td class="text-center">{{$product->price}} ريال سعودي</td>
+
+
+                                        <td>
+
+                                            @if($product->show_with_products == 1)
+
+                                                <span class="text-success">نعم</span> |
+
+                                                <a href="{{url('/admin/products/'.$product->id.'/change_status')}}" class="text-primary">اخفاء</a>
+
+                                            @else
+
+                                                <span class="text-danger">لا</span> |
+
+                                                <a href="{{url('/admin/products/'.$product->id.'/change_status')}}" class="text-primary">عرض</a>
+
+                                            @endif
+
+                                        </td>
+
                                         <td class="text-center">
                                             <a href="{{url('/admin/products/'.$product->id.'/images')}}" class="text-success"><i class="fa fa-picture-o" aria-hidden="true"></i></a> |
                                             <a href="{{route('products.edit', ['id' => $product->id])}}" class="text-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> |
                                             <a onclick="remove('{{$product->name}}', '{{url('/admin/products/'.$product->id.'/delete')}}')" href="#" class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                         </td>
+
                                     </tr>
 
                                 @endforeach

@@ -30,6 +30,7 @@ Route::post('/products/abb/store', 'AbbProductController@store');
 Route::get('/products/{id}/images', 'ImageController@index');
 Route::get('/images/{id}/delete', 'ImageController@delete');
 Route::post('/images/store/{product_id}', 'ImageController@store');
+Route::get('/products/{id}/change_status', 'AbbProductController@change_status');
 
 Route::get('/products/trash', 'ProductController@trash');
 Route::get('/products/trash/{id}/recovery', 'ProductController@recovery');
