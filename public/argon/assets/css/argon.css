@@ -15,6 +15,12 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+
+@font-face {
+    font-family: "Tajawal";
+    src: url("../../../fonts/Tajawal-Regular.otf");
+}
+
 :root
 {
     --blue: #5e72e4;
@@ -93,7 +99,7 @@ section
 body
 {
     direction: rtl;
-    font-family: Open Sans, sans-serif;
+    font-family: 'Tajawal', sans-serif !important;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -225,17 +231,14 @@ sup
 a
 {
     text-decoration: none;
-
-    color: #5e72e4;
+    color: #0099CB;
     background-color: transparent;
-
     -webkit-text-decoration-skip: objects;
 }
 a:hover
 {
-    text-decoration: none; 
-
-    color: #233dd2;
+    text-decoration: none;
+    color: #0099CB;
 }
 
 a:not([href]):not([tabindex])
@@ -521,7 +524,7 @@ h3,
 h4,
 .h4
 {
-    font-size: .9375rem;
+    font-size: 1.5375rem;
 }
 
 h5,
@@ -2972,15 +2975,15 @@ fieldset:disabled a.btn
 .btn-primary
 {
     color: #fff;
-    border-color: #5e72e4;
-    background-color: #5e72e4;
+    border-color: #0099CB;
+    background-color: #0099CB;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
 }
 .btn-primary:hover
 {
     color: #fff;
-    border-color: #5e72e4; 
-    background-color: #5e72e4;
+    border-color: #0099CB;
+    background-color: #0099CB;
 }
 .btn-primary:focus,
 .btn-primary.focus
@@ -3378,7 +3381,7 @@ fieldset:disabled a.btn
 }
 .btn-neutral:hover
 {
-    color: #212529;
+    color: #0099CB;
     border-color: white; 
     background-color: white;
 }
@@ -4087,8 +4090,8 @@ input[type='button'].btn-block
 
 .dropdown-menu-right
 {
-    right: 0;
-    left: auto;
+    right: auto;
+    left: 0;
 }
 
 .dropup .dropdown-menu
@@ -15400,7 +15403,7 @@ button.section-darker:focus
 
 .bg-gradient-primary
 {
-    background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
+    background: linear-gradient(87deg, 	#0099CB 0, #33669A 100%) !important;
 }
 
 .bg-gradient-secondary
@@ -16897,7 +16900,7 @@ a.text-lighter:focus
 
 .btn-neutral
 {
-    color: #5e72e4;
+    color: #0099CB;
 }
 
 .btn-icon .btn-inner--icon img
@@ -19166,8 +19169,7 @@ textarea[resize='horizontal']
 }
 .navbar-vertical .navbar-nav .nav-link
 {
-    font-size: .9rem; 
-
+    font-size: .9rem;
     padding-right: 1rem;
     padding-left: 1rem;
 }

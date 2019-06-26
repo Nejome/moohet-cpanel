@@ -1,95 +1,143 @@
-<div class="navbar-default sidebar" role="navigation">
-    <div class="sidebar-nav navbar-collapse">
-        <ul class="nav" id="side-menu">
+<!-- Sidenav -->
+<nav class="navbar navbar-vertical fixed-right navbar-expand-md navbar-light bg-white" id="sidenav-main">
+    <div class="container-fluid">
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <li class="sidebar-search">
+        <!-- Brand -->
+        <a class="navbar-brand pt-0" href="{{url('/home')}}">
+            <img src="{{asset('images/4.png')}}" class="navbar-brand-img">
+        </a>
 
-                <div class="sidebar_image_container">
-
-                    @if(isset(Auth::user()->image) && Auth::user()->image != '')
-
-                        <img src="{{asset('images/'.Auth::user()->image)}}">
-
-                    @else
-
-                        <img src="{{asset('images/man2.png')}}">
-
-                    @endif
-
+        <!-- User -->
+        <ul class="nav align-items-center d-md-none">
+            <li class="nav-item dropdown">
+                <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="ni ni-bell-55"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
                 </div>
-
-                @if(Auth::check())
-
-                    <p>{{Auth::user()->customer->name}}</p>
-
-                @endif
-
             </li>
-
-            <li>
-                <a href="{{url('/home')}}"><i class="fa fa-dashboard fa-fw"></i> لوحة التحكم</a>
-            </li>
-
-            <li>
-                <a href="{{route('notifications.index')}}"><i class="fa fa-bell fa-fw"></i> الإشعارات</a>
-            </li>
-
-            <li>
-                <a href="{{route('customers_orders.index')}}"><i class="fa fa-table fa-fw"></i> طلباتي</a>
-            </li>
-
-            <li>
-                <a href="{{url('/my_products/'.Auth::user()->customer->id)}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> منتجاتي</a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <i class="fa fa-briefcase" aria-hidden="true"></i>
-                    محفظتي
-                    <span class="balance_value">{{number_format(Auth::user()->customer->wallet->current_balance, 2)}} ريال سعودي</span>
-                    <span class="fa arrow"></span>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="media align-items-center">
+              <span class="avatar avatar-sm rounded-circle">
+                <img alt="Image placeholder" src="./assets/img/theme/team-1-800x800.jpg">
+              </span>
+                    </div>
                 </a>
-                <ul class="nav nav-second-level">
-
-                    <li>
-                        <a href="{{url('/my_wallet/'.Auth::user()->customer->id)}}">المعلومات الإساسية</a>
-                    </li>
-
-                    <li>
-                        <a href="{{url('/my_wallet/'.Auth::user()->customer->id.'/charge')}}">شحن الرصيد</a>
-                    </li>
-
-                    <li>
-                        <a href="{{url('/my_wallet/'.Auth::user()->customer->id.'/transaction_list')}}">قائمة معاملات الشحن</a>
-                    </li>
-
-                </ul>
+                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                    <div class=" dropdown-header noti-title">
+                        <h6 class="text-overflow m-0">Welcome!</h6>
+                    </div>
+                    <a href="./examples/profile.html" class="dropdown-item">
+                        <i class="ni ni-single-02"></i>
+                        <span>My profile</span>
+                    </a>
+                    <a href="./examples/profile.html" class="dropdown-item">
+                        <i class="ni ni-settings-gear-65"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="./examples/profile.html" class="dropdown-item">
+                        <i class="ni ni-calendar-grid-58"></i>
+                        <span>Activity</span>
+                    </a>
+                    <a href="./examples/profile.html" class="dropdown-item">
+                        <i class="ni ni-support-16"></i>
+                        <span>Support</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#!" class="dropdown-item">
+                        <i class="ni ni-user-run"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
             </li>
-
-            <li>
-                <a href="#">
-                    <i class="fa fa-money"></i>
-                    سحب رصيد
-                    <span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level">
-
-                    <li>
-                        <a href="{{url('/revoke_orders')}}"> الطلبات الحالية</a>
-                    </li>
-
-                    <li>
-                        <a href="{{url('/revoke_orders/create')}}">انشاء طلب جديد</a>
-                    </li>
-
-                    <li>
-                        <a href="{{url('/revoke_orders/completed')}}">الطلبات المكتملة</a>
-                    </li>
-
-                </ul>
-            </li>
-
         </ul>
-    </div>
 
-</div>
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+            <!-- Collapse header -->
+            <div class="navbar-collapse-header d-md-none">
+                <div class="row">
+                    <div class="col-6 collapse-brand">
+                        <a href="./index.html">
+                            <img src="./assets/img/brand/blue.png">
+                        </a>
+                    </div>
+                    <div class="col-6 collapse-close">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Navigation -->
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/home')}}">
+                        <i class="ni ni-tv-2 text-primary"></i> لوحة التحكم
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-bell text-yellow"></i>الإشعارات
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-shipping-fast text-cyan"></i> طلباتي
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-shopping-cart text-success"></i> منتجاتي
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-wallet text-info"></i> محفظتي
+                    </a>
+                </li>
+
+            </ul>
+
+            <hr class="my-3">
+
+            <h6 class="navbar-heading text-muted">الرصيد</h6>
+
+            <ul class="navbar-nav mb-md-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-money-check-alt"></i> شحن رصيد
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="far fa-credit-card"></i> سحب رصيد
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-th-list"></i> طلبات سحب الرصيد
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
