@@ -216,18 +216,13 @@ class CustomerController extends Controller
 
     }
 
-    public function show(Customer $customer)
-    {
-        //
-    }
-
 
     public function edit($id)
     {
 
-         $raw = Customer::find($id);
+         $row = Customer::findOrFail($id);
 
-         return view('profile', compact('raw'));
+         return view('customers.edit', compact('row'));
 
     }
 

@@ -9,7 +9,6 @@ Route::get('/logout', 'loginController@logout');
 
 Route::get('/home', 'CustomerHomeController@home');
 
-
 Route::get('/customers/waiting', 'CustomerController@waiting');
 Route::get('/customers/{id}/change_password', 'CustomerController@change_password');
 Route::post('/customers/{id}/change_password_store', 'CustomerController@change_password_store');

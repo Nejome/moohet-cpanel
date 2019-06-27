@@ -11,10 +11,11 @@
     <body class="bg-default">
 
     <div class="main-content">
+
         <!-- Navbar -->
         <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
             <div class="container px-4">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{url('/')}}">
                     <span style="color: white; font-size: 30px;">محيط</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,14 +42,14 @@
                     <ul class="navbar-nav ml-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link nav-link-icon" href="#">
+                            <a class="nav-link nav-link-icon" href="{{url('/customers/create')}}">
                                 <i class="ni ni-circle-08"></i>
                                 <span class="nav-link-inner--text">انشاء حساب</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link nav-link-icon" href="#">
+                            <a class="nav-link nav-link-icon" href="{{url('/')}}">
                                 <i class="ni ni-key-25"></i>
                                 <span class="nav-link-inner--text">تسجيل الدخول</span>
                             </a>
@@ -58,6 +59,7 @@
                 </div>
             </div>
         </nav>
+
         <!-- Header -->
         <div class="header bg-gradient-primary py-7 py-lg-8">
             <div class="container">
@@ -120,14 +122,14 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="الإيميل" type="email" name="email">
+                                        <input class="form-control" placeholder="البريد الإلكتروني" type="email" name="email">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="input-group input-group-alternative">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                            <span class="input-group-text"><i class="fas fa-key"></i></span>
                                         </div>
                                         <input class="form-control" placeholder="كلمة المرور" type="password" name="password">
                                     </div>
@@ -168,11 +170,11 @@
                     <ul class="nav nav-footer justify-content-center justify-content-xl-end">
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link text-light">انشاء حساب</a>
+                            <a href="{{url('/customers/create')}}" class="nav-link text-light">انشاء حساب</a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link text-light">تسجيل الدخول</a>
+                            <a href="{{url('/')}}" class="nav-link text-light">تسجيل الدخول</a>
                         </li>
 
                     </ul>

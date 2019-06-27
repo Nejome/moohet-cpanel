@@ -13,51 +13,40 @@
 
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
+
             <li class="nav-item dropdown">
-                <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="ni ni-bell-55"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
+
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="media align-items-center">
-              <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="./assets/img/theme/team-1-800x800.jpg">
-              </span>
-                    </div>
+                    @if(isset(Auth::user()->image) && Auth::user()->image != '')
+                        <div class="media align-items-center">
+                            <span class="avatar avatar-sm rounded-circle">
+                            <img alt="Image placeholder" src="{{asset('images/'.Auth::user()->image)}}">
+                        </span>
+                        </div>
+                    @else
+                        <div class="media align-items-center">
+                            <span class="avatar avatar-sm rounded-circle">
+                            <img alt="Image placeholder" src="{{asset('images/man2.png')}}">
+                        </span>
+                        </div>
+                    @endif
                 </a>
-                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
-                    <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome!</h6>
-                    </div>
-                    <a href="./examples/profile.html" class="dropdown-item">
+
+                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right text-right">
+
+                    <a href="{{url('/customers/'.Auth::user()->customer->id.'/edit')}}" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
-                        <span>My profile</span>
+                        <span>ملفي الشخصي</span>
                     </a>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-settings-gear-65"></i>
-                        <span>Settings</span>
-                    </a>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-calendar-grid-58"></i>
-                        <span>Activity</span>
-                    </a>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-support-16"></i>
-                        <span>Support</span>
-                    </a>
+
+
                     <div class="dropdown-divider"></div>
-                    <a href="#!" class="dropdown-item">
+                    <a href="{{url('/logout')}}" class="dropdown-item">
                         <i class="ni ni-user-run"></i>
-                        <span>Logout</span>
+                        <span>تسجيل الخروج</span>
                     </a>
                 </div>
+
             </li>
         </ul>
 
@@ -67,8 +56,8 @@
             <div class="navbar-collapse-header d-md-none">
                 <div class="row">
                     <div class="col-6 collapse-brand">
-                        <a href="./index.html">
-                            <img src="./assets/img/brand/blue.png">
+                        <a href="{{url('/home')}}">
+                            <img src="{{asset('images/4.png')}}">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -87,6 +76,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/home')}}">
                         <i class="ni ni-tv-2 text-primary"></i> لوحة التحكم
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/customers/'.Auth::user()->customer->id.'/edit')}}">
+                        <i class="ni ni-single-02 text-indigo"></i> ملفي الشخصي
                     </a>
                 </li>
 

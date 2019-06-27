@@ -48,9 +48,9 @@
 
                         <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right text-right">
 
-                            <a href="#" class="dropdown-item">
+                            <a href="{{url('/customers/'.Auth::user()->customer->id.'/edit')}}" class="dropdown-item">
                                 <i class="ni ni-single-02"></i>
-                                <span>بيانتي</span>
+                                <span>ملفي الشخصي</span>
                             </a>
 
                             <div class="dropdown-divider"></div>
