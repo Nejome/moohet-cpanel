@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Customer_order;
+use App\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -220,9 +222,11 @@ class CustomerController extends Controller
     public function edit($id)
     {
 
-         $row = Customer::findOrFail($id);
+        $row = Customer::findOrFail($id);
+        $orders_count = Customer_order::where(['customer_id' => $row->id])->count();
+        $products_count = Store::where('customer_id', $row->id)->count();
 
-         return view('customers.edit', compact('row'));
+         return view('customers.edit', compact(['row', 'orders_count', 'products_count']));
 
     }
 
@@ -231,47 +235,31 @@ class CustomerController extends Controller
     {
 
         $customer = Customer::find($id);
-
+        $user = User::find($customer->user_id);
 
         //validate data and image
         $messages = [
             'name.required' => 'عفوا قم بملء حقل الإسم',
+            'email.required' => 'عفوا قم بإدخال بريدك الإلكتروني',
+            'email.email' => 'عفوا قم بإدخال بريد الكتروني صحيح'
         ];
 
         $this->validate($request, [
             'name' => 'required',
+            'email' => 'required|email'
         ], $messages);
 
-        if(isset($request->image) && $request->image != ''){
+        //update user data
+        $user->email = $request->email;
+        $user->save();
 
-            $this->validate($request, [
-                'image' => 'image|mimes:jpeg,png,jpg,gif,svg'
-            ]);
-
-        }
-
-        //validate password if it filled
-        $user = User::find($customer->user_id);
-
-        //update the data
+        //update customer data
         $customer->name = $request->name;
         $customer->country_code = $request->country_code;
         $customer->country = $request->country;
         $customer->town = $request->town;
         $customer->address = $request->address;
         $customer->identification_number = $request->identification_number;
-
-        if(isset($request->image) && $request->image != ''){
-
-            $imageName = time().'.'.request()->image->getClientOriginalExtension();
-
-            request()->image->move(public_path('images'), $imageName);
-
-            $user->image = $imageName;
-
-        }
-
-        $user->save();
         $customer->save();
 
         if(!is_null($customer->country_code) && $customer->country_code != ''

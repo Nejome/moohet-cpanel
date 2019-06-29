@@ -111,15 +111,15 @@
                                 <div class="col">
                                     <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                                         <div>
-                                            <span class="heading">22</span>
+                                            <span class="heading">{{$orders_count}}</span>
                                             <span class="description">طلباتي</span>
                                         </div>
                                         <div>
-                                            <span class="heading">10</span>
+                                            <span class="heading">{{$products_count}}</span>
                                             <span class="description">منتجاتي</span>
                                         </div>
                                         <div>
-                                            <span class="heading">89</span>
+                                            <span class="heading">{{number_format($row->wallet->current_balance, 2)}}</span>
                                             <span class="description">رصيدي</span>
                                         </div>
                                     </div>
@@ -127,20 +127,19 @@
                             </div>
                             <div class="text-center">
                                 <h3>
-                                    Jessica Jones<span class="font-weight-light">, 27</span>
+                                    {{$row->name}}
                                 </h3>
+
                                 <div class="h5 font-weight-300">
-                                    <i class="ni location_pin mr-2"></i>Bucharest, Romania
+                                    {{$row->country}}, {{$row->town}}
                                 </div>
+
                                 <div class="h5 mt-4">
-                                    <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+                                    <i class="ni business_briefcase-24 mr-2"></i>{{$row->user->email}}
                                 </div>
                                 <div>
-                                    <i class="ni education_hat mr-2"></i>University of Computer Science
+                                    <i class="ni education_hat mr-2"></i>{{$row->phone}}
                                 </div>
-                                <hr class="my-4" />
-                                <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
-                                <a href="#">Show more</a>
                             </div>
                         </div>
                     </div>
@@ -150,29 +149,61 @@
                     <div class="card bg-secondary shadow">
                         <div class="card-header bg-white border-0">
                             <div class="row align-items-center">
-                                <div class="col-8">
+
+                                <div class="col-7">
                                     <h3 class="mb-0">بياناتي</h3>
                                 </div>
+
+                                <div class="col-5 text-center">
+
+                                    @if($row->user->password != NULL)
+                                        <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#password_modal">تعديل كلمة المرور</a>
+                                    @else
+                                        <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal-form">إضافة كلمة مرور</a>
+                                    @endif
+
+                                    <a href="#" class="btn btn-sm btn-default">تعديل رقم الهاتف</a>
+
+                                </div>
+
+
+                                @if($row->user->password != NULL)
+                                    @include('customers.change_password_modal')
+                                @else
+                                    @include('customers.add_password_modal')
+                                @endif
+
                             </div>
                         </div>
-                        <div class="card-body">
-                            <form>
 
+                        <form method="POST" action="{{route('customers.update', ['id' => $row->id])}}">
+
+                            {{csrf_field()}}
+
+                            @method('PUT')
+
+                            <div class="card-body">
                                 <div class="pl-lg-4">
+
+                                    @if(session()->has('message'))
+                                        <div class="alert alert-success">{{session()->get('message')}}</div>
+                                    @endif
 
                                     <div class="row">
 
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-username">الإسم</label>
-                                                <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse">
+                                                <input type="text" name="name" value="{{$row->name}}" id="input-username" class="form-control form-control-alternative">
+                                                <span class="text-danger">{{$errors->first('name')}}</span>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">البريد الإلكتروني</label>
-                                                <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                                                <input type="email" name="email" value="{{$row->user->email}}" id="input-email" class="form-control form-control-alternative">
+                                                <span class="text-danger">{{$errors->first('email')}}</span>
                                             </div>
                                         </div>
 
@@ -183,14 +214,14 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-first-name">رقم الهوية</label>
-                                                <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
+                                                <input type="text" name="identification_number" value="{{$row->identification_number}}" id="input-first-name" class="form-control form-control-alternative">
                                             </div>
                                         </div>
 
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-last-name">رمز البلد</label>
-                                                <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
+                                                <input type="text" name="country_code" value="{{$row->country_code}}" id="input-last-name" class="form-control form-control-alternative">
                                             </div>
                                         </div>
                                     </div>
@@ -200,31 +231,44 @@
                                 <hr class="my-4" />
 
                                 <div class="pl-lg-4">
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-address">العنوان</label>
-                                                <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                                                <input id="input-address" type="text" name="address" value="{{$row->address}}" class="form-control form-control-alternative">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row">
+
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-city">البلد</label>
-                                                <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York">
+                                                <input type="text" name="country" value="{{$row->country}}" id="input-city" class="form-control form-control-alternative">
                                             </div>
                                         </div>
+
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-country">المدينة</label>
-                                                <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States">
+                                                <input type="text" name="town" value="{{$row->town}}" id="input-country" class="form-control form-control-alternative">
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">تعديل</button>
+                                </div>
+                            </div>
+
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -233,23 +277,24 @@
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-6">
                         <div class="copyright text-center text-xl-left text-muted">
-                            &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+                            &copy; 2019 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">محيط</a>
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+
                             <li class="nav-item">
-                                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+                                <a href="#" class="nav-link" target="_blank">معلومات عننا</a>
                             </li>
+
                             <li class="nav-item">
-                                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+                                <a href="#" class="nav-link" target="_blank">تواصل معنا</a>
                             </li>
+
                             <li class="nav-item">
-                                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+                                <a href="#" class="nav-link" target="_blank">سياسات الإستخدام</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-                            </li>
+
                         </ul>
                     </div>
                 </div>

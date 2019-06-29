@@ -13,7 +13,7 @@ class Customer extends Model
 
     }
 
-    public function wallet() {
+    public function wallet(){
 
         return $this->hasOne('App\Wallet_information');
 
