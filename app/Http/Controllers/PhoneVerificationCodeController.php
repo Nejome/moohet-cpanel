@@ -10,12 +10,6 @@ use App\Customer;
 class PhoneVerificationCodeController extends Controller
 {
 
-    public function index()
-    {
-        //
-    }
-
-
     public function create()
     {
 
@@ -136,6 +130,8 @@ class PhoneVerificationCodeController extends Controller
 
             $saved_code->delete();
 
+            session()->flash('phone_verified', 'تم التحقق من واضافة رقم الهاتف الخاص بك بنجاح');
+
             //redirect to the profile page
 
             return redirect(url('/customers/'.$customer_id.'/edit'));
@@ -154,27 +150,4 @@ class PhoneVerificationCodeController extends Controller
 
     }
 
-
-    public function show(phone_verification_code $phone_verification_code)
-    {
-        //
-    }
-
-
-    public function edit(phone_verification_code $phone_verification_code)
-    {
-        //
-    }
-
-
-    public function update(Request $request, phone_verification_code $phone_verification_code)
-    {
-        //
-    }
-
-
-    public function destroy(phone_verification_code $phone_verification_code)
-    {
-        //
-    }
 }

@@ -287,6 +287,45 @@ class CustomerController extends Controller
 
     }
 
+    public function change_image(Request $request, $id) {
+
+        //validate the input
+        $messages = [
+           'image.required' => 'عفوا قم بإختيار الصورة الجديده',
+           'image.image' => 'الملف الذي قمت بإختياره لا يمثل صورة'
+        ];
+
+        $this->validate($request, [
+           'image' => 'required|image'
+        ], $messages);
+
+        $customer = Customer::find($id);
+
+        //remove old image
+        $old_image_path = public_path().'/images/'.$customer->user->image;
+
+        if(file_exists($old_image_path)) {
+
+            unlink($old_image_path);
+
+        }
+
+        //upload and save new image
+        $new_image_name = time().'.'.$request->image->getClientOriginalExtension();
+        $request->image->move(public_path('images'), $new_image_name);
+
+        $customer->user->image = $new_image_name;
+        $customer->user->save();
+
+        //set flash message
+        session()->flash('image_changed', 'تم تعديل صورتك الشخصية بنجاح');
+
+        //redirect back
+        return redirect()->back();
+
+
+    }
+
     public function change_password($id){
 
         $customer = Customer::find($id);
@@ -355,9 +394,5 @@ class CustomerController extends Controller
     }
 
 
-    public function destroy(Customer $customer)
-    {
-        //
-    }
 
 }

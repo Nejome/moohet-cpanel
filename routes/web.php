@@ -12,6 +12,7 @@ Route::get('/home', 'CustomerHomeController@home');
 Route::get('/customers/waiting', 'CustomerController@waiting');
 Route::get('/customers/{id}/change_password', 'CustomerController@change_password');
 Route::post('/customers/{id}/change_password_store', 'CustomerController@change_password_store');
+Route::post('/customers/{id}/change_image', 'CustomerController@change_image');
 Route::resource('customers', 'CustomerController');
 Route::post('/customers/verify_email', 'CustomerController@verify_email');
 Route::get('/customers/store/{unverified_customer_id}', 'CustomerController@store');

@@ -103,9 +103,10 @@
                         </div>
                         <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                             <div class="d-flex justify-content-between">
-
+                                <a href="#" class="btn btn-sm btn-light float-right" data-toggle="modal" data-target="#image_modal">تعديل الصورة</a>
                             </div>
                         </div>
+                        @include('customers.change_image_modal')
                         <div class="card-body pt-0 pt-md-4">
                             <div class="row">
                                 <div class="col">
@@ -138,7 +139,12 @@
                                     <i class="ni business_briefcase-24 mr-2"></i>{{$row->user->email}}
                                 </div>
                                 <div>
-                                    <i class="ni education_hat mr-2"></i>{{$row->phone}}
+                                    <i class="ni education_hat mr-2"></i>
+                                    @if($row->phone != null)
+                                        {{$row->phone}}
+                                    @else
+                                        <span class="text-danger">لم تقم بإضافة رقم هاتفك بعد</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -159,13 +165,16 @@
                                     @if($row->user->password != NULL)
                                         <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#password_modal">تعديل كلمة المرور</a>
                                     @else
-                                        <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal-form">إضافة كلمة مرور</a>
+                                        <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#password_modal">إضافة كلمة مرور</a>
                                     @endif
 
-                                    <a href="#" class="btn btn-sm btn-default">تعديل رقم الهاتف</a>
+                                    @if($row->phone == '')
+                                            <a href="#" class="btn btn-sm btn-default" data-toggle="modal" data-target="#phone_modal">اضافة رقم الهاتف</a>
+                                    @else
+                                            <a href="#" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#phone_modal">تعديل رقم الهاتف</a>
+                                    @endif
 
                                 </div>
-
 
                                 @if($row->user->password != NULL)
                                     @include('customers.change_password_modal')
@@ -173,7 +182,46 @@
                                     @include('customers.add_password_modal')
                                 @endif
 
+                                @include('customers.phone_verification_modal')
+
                             </div>
+
+                            <!-- Public Errors -->
+                            @if($errors->any())
+                                <ul class="alert alert-danger mt-3">
+                                    @foreach($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+
+                        <!-- Password Flash Messages -->
+                            @if(session()->has('incorrect_password'))
+                                <div class="alert alert-danger mt-3">{{session()->get('incorrect_password')}}</div>
+                            @endif
+                            @if(session()->has('password_changed'))
+                                <div class="alert alert-success mt-3">{{session()->get('password_changed')}}</div>
+                            @endif
+
+                        <!-- Phone Verification Flash Messages -->
+                            @if(session()->has('sent_message'))
+                                <div class="alert alert-success mt-3">{{session()->get('sent_message')}}</div>
+                            @endif
+                            @if(session()->has('error_message'))
+                                <div class="alert alert-warning mt-3">{{session()->get('error_message')}}</div>
+                            @endif
+                            @if(session()->has('wrong_code'))
+                                <div class="alert alert-danger mt-3">{{session()->get('wrong_code')}}</div>
+                            @endif
+                            @if(session()->has('phone_verified'))
+                                <div class="alert alert-success mt-3">{{session()->get('phone_verified')}}</div>
+                            @endif
+
+                        <!-- Image Change Flash Messages -->
+                            @if(session()->has('image_changed'))
+                                <div class="alert alert-success mt-3">{{session()->get('image_changed')}}</div>
+                            @endif
+
                         </div>
 
                         <form method="POST" action="{{route('customers.update', ['id' => $row->id])}}">

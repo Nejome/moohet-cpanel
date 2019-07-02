@@ -10,7 +10,9 @@
 
                     <div class="card-body px-lg-5 py-lg-5">
 
-                        <form role="form">
+                        <form method="POST" action="{{url('customers/'.$row->id.'/change_password_store')}}" role="form">
+
+                            {{csrf_field()}}
 
                             <div class="form-group mb-3">
                                 <div class="input-group input-group-alternative">
@@ -40,7 +42,7 @@
                             </div>
 
                             <div class="text-center">
-                                <button type="button" class="btn btn-primary my-4">تعديل</button>
+                                <button type="submit" class="btn btn-primary my-4">تعديل</button>
                             </div>
 
                         </form>
