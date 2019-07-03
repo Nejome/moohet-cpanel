@@ -42,14 +42,14 @@ class AbbProductController extends Controller
             'form_params' => [
                 'instanceKey' => env('OTA_API_KEY'),
                 'language' => 'en',
-                'itemId' => 'products-'.$request->item_id,
+                'itemId' => 'abb-'.$request->item_id,
             ]
 
         ]);
 
         $xml = new \SimpleXMLElement($result->getBody()->getContents());
 
-        /*dd($xml->OtapiItemFullInfo);*/
+        /*$xml-dd($xml->OtapiItemFullInfo);*/
 
         $product['title'] = (string)$xml->OtapiItemFullInfo->Title;
         $product['description'] = (string)$xml->OtapiItemFullInfo->Title;

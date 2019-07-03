@@ -24,7 +24,7 @@
 
                     <div class="panel-body row" style="padding: 40px;">
 
-                        <form method="POST" action="{{url('products')}}" role="form" class="col-md-10">
+                        <form method="POST" action="{{url('/admin/products/abb/store')}}" role="form" class="col-md-10">
 
                             {{csrf_field()}}
 

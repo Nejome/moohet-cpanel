@@ -78,7 +78,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">طلباتي</h5>
-                                            <span class="h2 font-weight-bold mb-0">{{$orders_count}}</span>
+                                            <span class="h2 font-weight-bold mb-0">{{$public_orders_count}}</span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-cyan text-white rounded-circle shadow">
@@ -96,7 +96,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">منتجاتي</h5>
-                                            <span class="h2 font-weight-bold mb-0">{{$products_count}}</span>
+                                            <span class="h2 font-weight-bold mb-0">{{$public_products_count}}</span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-success text-white rounded-circle shadow">
@@ -132,7 +132,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">رصيدي الحالي</h5>
-                                            <span class="h2 font-weight-bold mb-0">{{number_format($wallet->current_balance, 2)}}</span>
+                                            <span class="h2 font-weight-bold mb-0">{{number_format($public_wallet->current_balance, 2)}}</span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-info text-white rounded-circle shadow">

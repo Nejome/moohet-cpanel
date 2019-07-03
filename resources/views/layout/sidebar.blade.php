@@ -86,13 +86,13 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('notifications.index')}}">
                         <i class="fas fa-bell text-yellow"></i>الإشعارات
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('customers_orders.index')}}">
                         <i class="fas fa-shipping-fast text-cyan"></i> طلباتي
                     </a>
                 </li>
