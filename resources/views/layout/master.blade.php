@@ -4,6 +4,12 @@
 
     @include('layout.sidebar')
 
-    @yield('content')
+    <div class="main-content">
+
+        @include('layout.header')
+
+        @yield('content')
+
+    </div>
 
 @endsection
