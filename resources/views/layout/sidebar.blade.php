@@ -98,7 +98,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{url('/my_products/'.Auth::user()->customer->id)}}">
                         <i class="fas fa-shopping-cart text-success"></i> منتجاتي
                     </a>
                 </li>

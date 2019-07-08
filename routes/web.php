@@ -17,7 +17,6 @@ Route::resource('customers', 'CustomerController');
 Route::post('/customers/verify_email', 'CustomerController@verify_email');
 Route::get('/customers/store/{unverified_customer_id}', 'CustomerController@store');
 
-
 Route::resource('customers_orders', 'CustomerOrderController');
 
 Route::get('/my_products/{id}', 'StoreController@my_products');
@@ -44,7 +43,6 @@ Route::post('/my_wallet/{customer_id}/refund_transaction/{transaction_id}', 'Wal
 Route::resource('phone_verification', 'PhoneVerificationCodeController');
 Route::post('/phone_verification/generate_code/{customer_id}', 'PhoneVerificationCodeController@store');
 Route::post('/phone_verification/check_code/{customer_id}', 'PhoneVerificationCodeController@check_code');
-
 
 /*Password Reset*/
 Route::get('/password_reset/find_user', 'PasswordResetController@find_user_page');

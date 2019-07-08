@@ -1,90 +1,83 @@
 @extends('layout.master')
 
+@push('styles')
+    <link href="{{asset('argon/assets/vendor/nucleo/css/nucleo.css')}}" rel="stylesheet">
+    <link href="{{asset('argon/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
+    <link type="text/css" href="{{asset('argon/assets/css/argon.css?v=1.0.0')}}" rel="stylesheet">
+@endpush
+
 @section('content')
 
-    <div id="page-wrapper">
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
 
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">منتجاتي</h1>
-            </div>
-        </div>
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header border-0">
 
-        <div class="row">
+                        <h3 class="mb-0">قائمة منتجاتي</h3>
 
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        منتجاتي
                     </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                            <tr class="text-center">
+                                <th class="font-weight-700" scope="col">المنتج</th>
+                                <th class="font-weight-700" scope="col">الكمية</th>
+                                <th class="font-weight-700" scope="col">سعر البيع</th>
+                                <th class="font-weight-700" scope="col">بيع في فيس بوك</th>
+                                <th class="font-weight-700" scope="col">بيع في انستجرام</th>
+                                <th class="font-weight-700" scope="col">بيع في منصات محيط الاخري</th>
+                                <th class="font-weight-700" scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($products as $row)
 
-                    <div class="panel-body">
+                                <tr class="text-center">
 
-                        @if(count($products) > 0)
+                                    <td>{{$row->product->name}}</td>
 
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover text-center">
-                                    <thead>
-                                    <tr>
-                                        <th class="text-center">إسم المنتج</th>
-                                        <th class="text-center">الكمية</th>
-                                        <th class="text-center">سعر البيع</th>
-                                        <th class="text-center">بيع في فيس بوك</th>
-                                        <th class="text-center">بيع في انستجرام</th>
-                                        <th class="text-center">بيع في منصات محيط الاخري</th>
-                                        <th class="text-center">العمليات</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
+                                    <td>{{$row->amount}}{{$row->product->less_amount_text}}</td>
 
-                                    @foreach($products as $row)
+                                    <td>{{$row->selling_price}}ريال سعودي</td>
 
-                                        <tr>
+                                    <td>
+                                        @if($row->facebook == 1) <span class="text-success">نعم</span> @elseif($row->facebook == 0) <span class="text-danger">لا</span> @endif
+                                    </td>
 
-                                            <td>{{$row->product->name}}</td>
+                                    <td>
+                                        @if($row->instagram == 1) <span class="text-success">نعم</span> @elseif($row->facebook == 0) <span class="text-danger">لا</span> @endif
+                                    </td>
 
-                                            <td>{{$row->amount}}{{$row->product->less_amount_text}}</td>
+                                    <td>
+                                        @if($row->others == 1) <span class="text-success">نعم</span> @elseif($row->facebook == 0) <span class="text-danger">لا</span> @endif
+                                    </td>
 
-                                            <td>{{$row->selling_price}}ريال سعودي</td>
+                                    <td>
+                                        <a href="{{url('/my_products/'.$row->id.'/show')}}" class="text-primary">التفاصيل</a>
+                                    </td>
 
-                                            <td>
-                                                @if($row->facebook == 1) <span class="text-success">نعم</span> @elseif($row->facebook == 0) <span class="text-danger">لا</span> @endif
-                                            </td>
+                                </tr>
 
-                                            <td>
-                                                @if($row->instagram == 1) <span class="text-success">نعم</span> @elseif($row->facebook == 0) <span class="text-danger">لا</span> @endif
-                                            </td>
-
-                                            <td>
-                                                @if($row->others == 1) <span class="text-success">نعم</span> @elseif($row->facebook == 0) <span class="text-danger">لا</span> @endif
-                                            </td>
-
-                                            <td>
-                                                <a href="{{url('/my_products/'.$row->id.'/show')}}" class="text-primary">التفاصيل</a>
-                                            </td>
-
-                                        </tr>
-
-                                    @endforeach
-
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        @else
-
-                            <h1>لا توجد لديك منتجات بمخازن محيط</h1>
-
-                        @endif
-
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
 
                 </div>
-
             </div>
-
         </div>
 
     </div>
 
 @endsection
+
+@push('scripts')
+    <script src="{{asset('argon/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{asset('argon/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('argon/assets/vendor/chart.js/dist/Chart.min.js')}}"></script>
+    <script src="{{asset('argon/assets/vendor/chart.js/dist/Chart.extension.js')}}"></script>
+    <script src="{{asset('argon/assets/js/argon.js?v=1.0.0')}}"></script>
+@endpush
