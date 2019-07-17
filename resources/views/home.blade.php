@@ -10,8 +10,6 @@
 
     <div class="container-fluid mt--7">
 
-
-
     </div>
 
 @endsection

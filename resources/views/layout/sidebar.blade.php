@@ -104,7 +104,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{url('/my_wallet/info')}}">
                         <i class="fas fa-wallet text-info"></i> محفظتي
                     </a>
                 </li>

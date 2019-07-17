@@ -16,33 +16,23 @@ class WalletInformationController extends Controller
 {
 
 
-    public function show($customer_id)
+    public function show()
     {
+
+        $customer_id = Auth::user()->customer->id;
+
         $wallet = Wallet_information::where('customer_id', $customer_id)->first();
 
         $orders = Customer_order::where('customer_id', $customer_id)->get();
 
-        return view('wallet.main', compact(['wallet', 'orders']));
+        $paytabs = payTabs_transaction::where('customer_id', $customer_id)
+            ->where('type', '1')
+            ->get();
+
+        return view('wallet.main', compact(['wallet', 'orders', 'paytabs']));
 
     }
 
-
-    public function edit(Wallet_information $wallet_information)
-    {
-        //
-    }
-
-
-    public function update(Request $request, Wallet_information $wallet_information)
-    {
-        //
-    }
-
-
-    public function destroy(Wallet_information $wallet_information)
-    {
-        //
-    }
 
     public function charge($customer_id){
 

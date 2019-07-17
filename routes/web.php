@@ -28,7 +28,7 @@ Route::get('/register/redirect', 'CustomerController@redirectToProvider');
 Route::get('/register/callback', 'CustomerController@handleProviderCallback');
 
 /*Wallet info*/
-Route::get('/my_wallet/{customer_id}', 'WalletInformationController@show');
+Route::get('/my_wallet/info', 'WalletInformationController@show');
 
 /*Charge Balance*/
 Route::get('/my_wallet/{customer_id}/charge', 'WalletInformationController@charge');

@@ -1,168 +1,116 @@
 @extends('layout.master')
 
+@push('styles')
+    <link href="{{asset('argon/assets/vendor/nucleo/css/nucleo.css')}}" rel="stylesheet">
+    <link href="{{asset('argon/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
+    <link type="text/css" href="{{asset('argon/assets/css/argon.css?v=1.0.0')}}" rel="stylesheet">
+@endpush
+
 @section('content')
 
-    <div id="page-wrapper">
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
 
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">تفاصيل المنتج</h1>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-12">
-
-                @if(session()->has('edit_success')) <div class="alert alert-info"> {{session()->get('edit_success')}} </div> @endif
-
-                <div class="panel panel-default">
-
-                    <div class="panel-heading">
-
-                        تفاصيل المنتج
-
+            <div class="col-xl-10 m-auto">
+                <div class="card bg-secondary shadow">
+                    <div class="card-header bg-white border-0">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h3 class="mb-0">تفاصيل المنتج</h3>
+                            </div>
+                        </div>
+                        @if(session()->has('edit_success')) <div class="alert alert-success mt-2"> {{session()->get('edit_success')}} </div> @endif
                     </div>
 
-                    <div class="panel-body">
+                    <form method="POST" action="{{url('/my_products/'.$store->id.'/edit')}}">
 
-                        <form method="POST" action="{{url('/my_products/'.$store->id.'/edit')}}">
+                        {{csrf_field()}}
 
-                            {{csrf_field()}}
+                        <div class="card-body">
 
                             <div class="row">
 
                                 <div class="col-md-8">
 
-                                    <h1>{{$store->product->name}}</h1>
-
-                                    <div class="row">
-
-
-                                        <div class="form-group row col-md-6">
-
-                                            <label class="col-md-5 custom_form_label text-primary">الكمية</label>
-
-                                            <label class="col-md-7" style="padding-top: 12px;">{{$store->amount}} {{$store->product->less_amount_text}}</label>
-
+                                    <div class="pl-lg-4">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group focused">
+                                                    <label class="form-control-label">الكمية</label>
+                                                    <div class="mt-3 text-info">{{$store->amount}} {{$store->product->less_amount_text}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">سعر البيع/ريال</label>
+                                                    <input type="text" name="selling_price" class="form-control form-control-alternative" value="{{$store->selling_price}}">
+                                                </div>
+                                            </div>
                                         </div>
-
-                                        <div class="form-group row col-md-6">
-
-                                            <label class="col-sm-5 custom_form_label text-primary">سعر البيع</label>
-
-                                            <input name="selling_price" class="form-control col-sm-7" style="padding-top: 12px;" value="{{$store->selling_price}}">
-
-                                        </div>
-
                                     </div>
-
-                                    <div class="row">
-
-                                        <div class="form-group row col-md-6">
-
-                                            <label class="col-md-7 custom_form_label text-primary">بيع في فيس بوك</label>
-
-                                            <div class="col-md-5" style="padding-top: 10px;">
-
-                                                <div class="form-check" style="display: inline-block; margin-left: 22px;">
-                                                    <input class="form-check-input" type="radio" name="facebook" id="facebook_yes" value="1" @if($store->facebook == 1) checked @endif>
-                                                    <label class="form-check-label" for="facebook_yes">
-                                                        نعم
-                                                    </label>
+                                    <h6 class="heading-small text-muted mb-4">منصات البيع</h6>
+                                    <div class="pl-lg-4">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="form-group focused">
+                                                    <label class="form-control-label" for="input-city">فيس بوك</label>
+                                                    <select name="facebook"  class="form-control form-control-alternative">
+                                                        <option value="1" @if($store->facebook == 1) selected @endif>نعم</option>
+                                                        <option value="0" @if($store->facebook == 0) selected @endif>لا</option>
+                                                    </select>
                                                 </div>
-
-                                                <div class="form-check" style="display: inline-block;">
-                                                    <input class="form-check-input" type="radio" name="facebook" id="facebook_no" value="0" @if($store->facebook == 0) checked @endif>
-                                                    <label class="form-check-label" for="facebook_no">
-                                                        لا
-                                                    </label>
-                                                </div>
-
                                             </div>
-
-                                        </div>
-
-                                        <div class="form-group row col-md-6">
-
-                                            <label class="col-md-7 custom_form_label text-primary">بيع في انستجرام</label>
-
-                                            <div class="col-md-5" style="padding-top: 10px;">
-
-                                                <div class="form-check" style="display: inline-block; margin-left: 22px;">
-                                                    <input class="form-check-input" type="radio" name="instagram" id="instagram_yes" value="1" @if($store->instagram == 1) checked @endif>
-                                                    <label class="form-check-label" for="instagram_yes">
-                                                        نعم
-                                                    </label>
+                                            <div class="col-lg-4">
+                                                <div class="form-group focused">
+                                                    <label class="form-control-label" for="input-country">انستجرام</label>
+                                                    <select name="instagram" class="form-control form-control-alternative">
+                                                        <option value="1" @if($store->instagram == 1) selected @endif>نعم</option>
+                                                        <option value="0" @if($store->instagram == 0) selected @endif>لا</option>
+                                                    </select>
                                                 </div>
-
-                                                <div class="form-check" style="display: inline-block;">
-                                                    <input class="form-check-input" type="radio" name="instagram" id="instagram_no" value="0" @if($store->instagram == 0) checked @endif>
-                                                    <label class="form-check-label" for="instagram_no">
-                                                        لا
-                                                    </label>
-                                                </div>
-
                                             </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-
-                                        <div class="form-group row col-md-6">
-
-                                            <label class="col-md-7 custom_form_label text-primary">بيع في منصات محيط الاخري</label>
-
-                                            <div class="col-md-5" style="padding-top: 10px;">
-
-                                                <div class="form-check" style="display: inline-block; margin-left: 22px;">
-                                                    <input class="form-check-input" type="radio" name="others" id="others_yes" value="1" @if($store->others == 1) checked @endif>
-                                                    <label class="form-check-label" for="others_yes">
-                                                        نعم
-                                                    </label>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-country">اخرى</label>
+                                                    <select name="others" class="form-control form-control-alternative">
+                                                        <option value="1" @if($store->others == 1) selected @endif>نعم</option>
+                                                        <option value="0" @if($store->others == 0) selected @endif>لا</option>
+                                                    </select>
                                                 </div>
-
-                                                <div class="form-check" style="display: inline-block;">
-                                                    <input class="form-check-input" type="radio" name="others" id="others_no" value="0" @if($store->others == 0) checked @endif>
-                                                    <label class="form-check-label" for="others_no">
-                                                        لا
-                                                    </label>
-                                                </div>
-
                                             </div>
-
                                         </div>
-
                                     </div>
 
                                 </div>
 
                                 <div class="col-md-4">
-                                    <img src="{{asset('images/'.$store->product->images[0]->name)}}" style="width: 100% !important; height: 100% !important;">
+                                    <img src="{{asset('images/products/'.$store->product->images[0]->name)}}" style="width: 100% !important; height: 100% !important;">
                                 </div>
 
                             </div>
 
-                            <div class="text-center">
+                        </div>
 
-                                <input type="submit" class="btn btn-primary" value="تعديل">
+                        <div class="card-footer text-center">
+                            <input type="submit" class="btn btn-primary" value="حفظ">
+                            <a href="{{url('/my_products/'.Auth::user()->customer->id)}}" class="btn btn-secondary">رجوع</a>
+                        </div>
 
-                                <a href="{{url('/my_products/'.Auth::user()->customer->id)}}" class="btn btn-default">رجوع</a>
-
-                            </div>
-
-                        </form>
-
-                    </div>
+                    </form>
 
                 </div>
-
             </div>
-
         </div>
 
     </div>
 
 @endsection
+
+@push('scripts')
+    <script src="{{asset('argon/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{asset('argon/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('argon/assets/vendor/chart.js/dist/Chart.min.js')}}"></script>
+    <script src="{{asset('argon/assets/vendor/chart.js/dist/Chart.extension.js')}}"></script>
+    <script src="{{asset('argon/assets/js/argon.js?v=1.0.0')}}"></script>
+@endpush

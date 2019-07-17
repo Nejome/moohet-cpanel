@@ -6,7 +6,11 @@
 
     <div class="main-content">
 
-        @include('layout.header')
+        @if(Request::url() != url('/my_wallet/info'))
+
+            @include('layout.header')
+
+        @endif
 
         @yield('content')
 

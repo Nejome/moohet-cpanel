@@ -45,7 +45,7 @@ class PhoneVerificationCodeController extends Controller
             'apiKey' => env('MOBILY_API_KEY'),
             'numbers' => $request->phone,
             'sender' => 'Moohet',
-            'msg' => 'Your verification code is: '.$code,
+            'msg' => $code,
             'lang' => '3',
             'applicationType' => '68'
         ];
