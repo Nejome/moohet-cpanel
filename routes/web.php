@@ -31,7 +31,7 @@ Route::get('/register/callback', 'CustomerController@handleProviderCallback');
 Route::get('/my_wallet/info', 'WalletInformationController@show');
 
 /*Charge Balance*/
-Route::get('/my_wallet/{customer_id}/charge', 'WalletInformationController@charge');
+Route::get('/my_wallet/charge', 'WalletInformationController@charge');
 Route::post('/my_wallet/{customer_id}/charge_transaction', 'WalletInformationController@charge_transaction');
 Route::post('/my_wallet/charge/callback', 'WalletInformationController@charge_callback');
 

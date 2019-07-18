@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer_order;
+use App\payTabs_transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\RevokeOrder;
@@ -14,9 +16,17 @@ class RevokeOrderController extends Controller
 
     public function index() {
 
+        $customer_id = Auth::user()->customer->id;
+
+        $wallet = Wallet_information::where('customer_id', $customer_id)->first();
+
+        $paytabs = payTabs_transaction::where('customer_id', $customer_id)
+            ->where('type', '1')
+            ->get();
+
         $orders = RevokeOrder::where(['customer_id' => Auth::user()->customer->id, 'complete' => 0])->get();
 
-        return view('revoke_orders.index', compact('orders'));
+        return view('revoke_orders.index', compact(['paytabs', 'wallet', 'orders']));
 
     }
 

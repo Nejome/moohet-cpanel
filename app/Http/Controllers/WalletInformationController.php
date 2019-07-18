@@ -25,18 +25,24 @@ class WalletInformationController extends Controller
 
         $orders = Customer_order::where('customer_id', $customer_id)->get();
 
-        $paytabs = payTabs_transaction::where('customer_id', $customer_id)
-            ->where('type', '1')
-            ->get();
-
-        return view('wallet.main', compact(['wallet', 'orders', 'paytabs']));
+        return view('wallet.main', compact(['wallet', 'orders']));
 
     }
 
 
-    public function charge($customer_id){
+    public function charge(){
 
-        return view('wallet.charge');
+        $customer_id = Auth::user()->customer->id;
+
+        $wallet = Wallet_information::where('customer_id', $customer_id)->first();
+
+        $orders = Customer_order::where('customer_id', $customer_id)->get();
+
+        $paytabs = payTabs_transaction::where('customer_id', $customer_id)
+            ->where('type', '1')
+            ->get();
+
+        return view('wallet.charge', compact(['paytabs', 'wallet', 'orders']));
 
     }
 
@@ -222,7 +228,7 @@ class WalletInformationController extends Controller
 
         $paytab->save();
 
-        return redirect('/my_wallet/'.Auth::user()->customer->id.'/charge');
+        return redirect('/my_wallet/charge');
 
     }
 

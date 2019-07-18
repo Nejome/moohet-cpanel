@@ -117,18 +117,13 @@
 
             <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{url('/my_wallet/charge')}}">
                         <i class="fas fa-money-check-alt"></i> شحن رصيد
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{url('/revoke_orders')}}">
                         <i class="far fa-credit-card"></i> سحب رصيد
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-th-list"></i> طلبات سحب الرصيد
                     </a>
                 </li>
             </ul>
