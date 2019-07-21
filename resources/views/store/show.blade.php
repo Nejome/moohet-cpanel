@@ -9,11 +9,11 @@
 @section('content')
 
     <!-- Page content -->
-    <div class="container-fluid mt--7">
+    <div class="container-fluid mt--8">
 
         <div class="row">
             <div class="col-xl-10 m-auto">
-                <div class="card bg-secondary shadow">
+                <div class="card bg-secondary shadow mb-5">
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">

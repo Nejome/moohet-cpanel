@@ -141,6 +141,11 @@
                                 <h3 class="mb-0">معاملات سحب الرصيد</h3>
                             </div>
                         </div>
+
+                        @if(session()->has('order_created')) <div class="alert alert-success mb-0 mt-1">{{session()->get('order_created')}}</div> @endif
+                        @if(session()->has('updated_success')) <div class="alert alert-success mb-0 mt-1">{{session()->get('updated_success')}}</div> @endif
+                        @if(session()->has('sent_to_trash')) <div class="alert alert-success mb-0 mt-1">{{session()->get('sent_to_trash')}}</div> @endif
+
                     </div>
                     <div class="card-body" style="padding-top: 0.5rem;">
                         <div class="row">
@@ -253,14 +258,134 @@
                                                             </div>
 
                                                         </form>
+
                                                     </div>
 
                                                     <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
-                                                        2
+
+                                                        <div class="table-responsive">
+                                                            <table class="table align-items-center table-flush">
+                                                                <thead class="thead-light">
+                                                                <tr class="text-center">
+                                                                    <th class="font-weight-700" scope="col">المبلغ</th>
+                                                                    <th class="font-weight-700" scope="col">البنك</th>
+                                                                    <th class="font-weight-700" scope="col">الفرع</th>
+                                                                    <th class="font-weight-700" scope="col">رقم الحساب</th>
+                                                                    <th class="font-weight-700" scope="col">ملاحظات</th>
+                                                                    <th class="font-weight-700" scope="col"></th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                @foreach($current_orders as $order)
+                                                                    <tr class="text-center">
+
+                                                                        <td>{{$order->amount}}</td>
+
+                                                                        <td>{{$order->bank}}</td>
+
+                                                                        <td>{{$order->branch}}</td>
+
+                                                                        <td>{{$order->account_number}}</td>
+
+                                                                        <td>
+                                                                            @if($order->notes == null)
+                                                                                لا توجد
+                                                                            @else
+                                                                                {{$order->notes}}
+                                                                            @endif
+                                                                        </td>
+
+                                                                        <td>
+                                                                            @if($order->showed == 0)
+
+                                                                                <a href="{{url('/revoke_orders/edit?id='.$order->id)}}" class="text-warning">
+                                                                                    <i class="fas fa-edit"></i>
+                                                                                </a>&nbsp;
+
+                                                                                |
+
+                                                                                &nbsp;<a href="{{url('/revoke_orders/'.$order->id.'/delete_from_current')}}" class="text-danger">
+                                                                                    <i class="fas fa-trash-alt"></i>
+                                                                                </a>
+
+                                                                            @else
+
+                                                                                -
+
+                                                                            @endif
+                                                                        </td>
+
+                                                                    </tr>
+                                                                @endforeach
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
                                                     </div>
 
                                                     <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
-                                                        3
+
+                                                        <div class="table-responsive">
+                                                            <table class="table align-items-center table-flush">
+                                                                <thead class="thead-light">
+                                                                <tr class="text-center">
+                                                                    <th class="font-weight-700" scope="col">المبلغ</th>
+                                                                    <th class="font-weight-700" scope="col">البنك</th>
+                                                                    <th class="font-weight-700" scope="col">الفرع</th>
+                                                                    <th class="font-weight-700" scope="col">رقم الحساب</th>
+                                                                    <th class="font-weight-700" scope="col">ملاحظاتي</th>
+                                                                    <th class="font-weight-700" scope="col">رقم حساب المرسل</th>
+                                                                    <th class="font-weight-700" scope="col">رقم العملية</th>
+                                                                    <th class="font-weight-700" scope="col">تاريخ العميلة</th>
+                                                                    <th class="font-weight-700" scope="col"></th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                @foreach($complete_orders as $row)
+
+                                                                    <tr>
+
+                                                                        <td>{{$row->amount}} ريال سعودي</td>
+
+                                                                        <td>{{$row->bank}}</td>
+
+                                                                        <td>{{$row->branch}}</td>
+
+                                                                        <td>{{$row->account_number}}</td>
+
+                                                                        <td>
+                                                                            @if($row->notes == null)
+                                                                                لا توجد
+                                                                            @else
+                                                                                {{$row->notes}}
+                                                                            @endif
+                                                                        </td>
+
+                                                                        <td>{{$row->revoke_operation->sender_account_number}}</td>
+
+                                                                        <td>{{$row->revoke_operation->transaction_id}}</td>
+
+                                                                        <td>{{$row->revoke_operation->transaction_date}}</td>
+
+                                                                        <td>
+
+                                                                            <a href="{{url('/revoke_orders/'.$row->id .'/delete')}}" class="text-danger">
+                                                                                <i class="fas fa-trash-alt"></i>
+                                                                            </a>
+
+                                                                        </td>
+
+                                                                    </tr>
+
+                                                                @endforeach
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
                                                     </div>
 
                                                 </div>

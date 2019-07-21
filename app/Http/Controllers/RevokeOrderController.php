@@ -24,9 +24,11 @@ class RevokeOrderController extends Controller
             ->where('type', '1')
             ->get();
 
-        $orders = RevokeOrder::where(['customer_id' => Auth::user()->customer->id, 'complete' => 0])->get();
+        $current_orders = RevokeOrder::where(['customer_id' => Auth::user()->customer->id, 'complete' => 0])->get();
 
-        return view('revoke_orders.index', compact(['paytabs', 'wallet', 'orders']));
+        $complete_orders = RevokeOrder::where(['customer_id' => Auth::user()->customer->id, 'complete' => 1, 'trash' => 0])->get();
+
+        return view('revoke_orders.index', compact(['paytabs', 'wallet', 'current_orders', 'complete_orders']));
 
     }
 
@@ -116,19 +118,20 @@ class RevokeOrderController extends Controller
 
     }
 
-    public function completed() {
 
-        $orders = RevokeOrder::where(['customer_id' => Auth::user()->customer->id, 'complete' => 1, 'trash' => 0])->get();
+    public function edit(Request $request) {
 
-        return view('revoke_orders.complete', compact('orders'));
+        $order = RevokeOrder::findOrFail($request->id);
 
-    }
+        $customer_id = Auth::user()->customer->id;
 
-    public function edit($id) {
+        $wallet = Wallet_information::where('customer_id', $customer_id)->first();
 
-        $order = RevokeOrder::findOrFail($id);
+        $paytabs = payTabs_transaction::where('customer_id', $customer_id)
+            ->where('type', '1')
+            ->get();
 
-        return view('revoke_orders.edit', compact('order'));
+        return view('revoke_orders.edit', compact(['order', 'wallet', 'paytabs']));
 
     }
 
@@ -180,9 +183,22 @@ class RevokeOrderController extends Controller
         }
 
 
-        session()->flash('sent_to_trash', 'تم حذف الطلبية بنجاح');
+        session()->flash('sent_to_trash', 'تم حذف الطلب بنجاح');
 
-        return redirect(url('/revoke_orders/completed'));
+        return redirect(url('/revoke_orders'));
+
+    }
+
+    public function delete_from_current($id) {
+
+        $order = RevokeOrder::findOrFail($id);
+
+        $order->delete();
+
+        session()->flash('sent_to_trash', 'تم حذف الطلب بنجاح');
+
+        return redirect(url('/revoke_orders'));
+
 
     }
 

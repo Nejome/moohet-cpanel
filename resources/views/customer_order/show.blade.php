@@ -12,14 +12,14 @@
     <div class="container-fluid mt--7">
         <div class="row">
 
-            <div class="col-xl-8 mt-5 mr-auto ml-auto mb-5 mb-xl-0">
-                <div class="card card-profile shadow">
+            <div class="col-xl-8 m-auto">
+                <div class="card card-profile shadow mb-7">
 
                     <div class="row justify-content-center">
-                        <div class="col-lg-3 order-lg-2">
+                        <div class="col-lg-3 m-auto">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    <img src="{{asset('images/products/'.$order->order->product->images[0]->name)}}" class="rounded-circle">
+                                    <img src="{{asset('images/products/'.$order->order->product->images[0]->name)}}" width="100%" class="rounded-circle">
                                 </a>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col text-left">
-                                        <span class="text-info">الحالة : </span>
+                                        <span class="text-info">الحالة</span>
                                     </div>
                                     <div class="col text-right">
                                         @if($order->order->status == 0)
@@ -71,7 +71,7 @@
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col text-left">
-                                        <span class="text-info">نوع الإستلام : </span>
+                                        <span class="text-info">نوع الإستلام</span>
                                     </div>
                                     <div class="col text-right">
                                         @if($order->arrival_type == 1)
@@ -92,7 +92,7 @@
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col text-left">
-                                        <span class="text-info">البائع : </span>
+                                        <span class="text-info">البائع</span>
                                     </div>
                                     <div class="col text-right">
                                         {{$order->order->product->company}}
@@ -102,7 +102,7 @@
                             <div class="col">
                                 <div class="row">
                                     <div class="col text-left">
-                                        <span class="text-info">زمن الوصول : </span>
+                                        <span class="text-info">زمن الوصول</span>
                                     </div>
                                     <div class="col text-right">
                                         {{$order->order->arrival_date}}
@@ -115,7 +115,7 @@
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col text-left">
-                                        <span class="text-info">الكمية : </span>
+                                        <span class="text-info">الكمية</span>
                                     </div>
                                     <div class="col text-right">
                                         {{$order->order->product->amount_value}} {{$order->order->product->less_amount_text}}
@@ -125,7 +125,7 @@
                             <div class="col">
                                 <div class="row">
                                     <div class="col text-left">
-                                        <span class="text-info">السعر : </span>
+                                        <span class="text-info">السعر</span>
                                     </div>
                                     <div class="col text-right">
                                         {{$order->total}} ريال
