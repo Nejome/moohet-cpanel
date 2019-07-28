@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('app')
 
 @push('styles')
     <link href="{{asset('argon/assets/vendor/nucleo/css/nucleo.css')}}" rel="stylesheet">

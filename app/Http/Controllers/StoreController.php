@@ -12,7 +12,7 @@ class StoreController extends Controller
 
          $products = Store::where('customer_id', $id)->get();
 
-         return view('store.index', compact('products'));
+         return view('client.store.index', compact('products'));
 
     }
 
@@ -20,7 +20,7 @@ class StoreController extends Controller
 
         $store = Store::findOrFail($store_id);
 
-        return view('store.show', compact('store'));
+        return view('client.store.show', compact('store'));
 
     }
 

@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('app')
 
 @push('styles')
     <link href="{{asset('them_css/rtl/bootstrap.min.css')}}" rel="stylesheet">

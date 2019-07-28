@@ -87,16 +87,6 @@ class CustomerController extends Controller
 
     }
 
-    public function index()
-    {
-
-        $customers = Customer::all();
-
-        return view('admin.customers.list', compact('customers'));
-
-    }
-
-
     public function create()
     {
 
@@ -226,7 +216,7 @@ class CustomerController extends Controller
         $orders_count = Customer_order::where(['customer_id' => $row->id])->count();
         $products_count = Store::where('customer_id', $row->id)->count();
 
-         return view('customers.edit', compact(['row', 'orders_count', 'products_count']));
+         return view('client.customers.edit', compact(['row', 'orders_count', 'products_count']));
 
     }
 
@@ -330,7 +320,7 @@ class CustomerController extends Controller
 
         $customer = Customer::find($id);
 
-        return view('customers.change_password', compact('customer'));
+        return view('client.customers.change_password', compact('customer'));
 
     }
 

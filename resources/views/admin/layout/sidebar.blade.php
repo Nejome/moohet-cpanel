@@ -37,7 +37,7 @@
             </li>
 
             <li>
-                <a href="{{url('/customers')}}"><i class="fa fa-users" aria-hidden="true"></i> العملاء</a>
+                <a href="{{url('/admin/customers')}}"><i class="fa fa-users" aria-hidden="true"></i> العملاء</a>
             </li>
 
             <li>

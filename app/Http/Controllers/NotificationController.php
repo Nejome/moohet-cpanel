@@ -13,20 +13,8 @@ class NotificationController extends Controller
 
         $notifications = Notification::latest()->get();
 
-        return view('notifications.index', compact('notifications'));
+        return view('client.notifications.index', compact('notifications'));
 
-    }
-
-
-    public function create()
-    {
-        //
-    }
-
-
-    public function store(Request $request)
-    {
-        //
     }
 
 
@@ -35,7 +23,7 @@ class NotificationController extends Controller
 
         $notification->showed();
 
-        return view('notifications.show')->with(['notification' => $notification]);
+        return view('client.notifications.show')->with(['notification' => $notification]);
 
     }
 

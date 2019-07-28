@@ -28,13 +28,13 @@ class RevokeOrderController extends Controller
 
         $complete_orders = RevokeOrder::where(['customer_id' => Auth::user()->customer->id, 'complete' => 1, 'trash' => 0])->get();
 
-        return view('revoke_orders.index', compact(['paytabs', 'wallet', 'current_orders', 'complete_orders']));
+        return view('client.revoke_orders.index', compact(['paytabs', 'wallet', 'current_orders', 'complete_orders']));
 
     }
 
     public function create() {
 
-        return view('revoke_orders.create');
+        return view('client.revoke_orders.create');
 
     }
 
@@ -131,7 +131,7 @@ class RevokeOrderController extends Controller
             ->where('type', '1')
             ->get();
 
-        return view('revoke_orders.edit', compact(['order', 'wallet', 'paytabs']));
+        return view('client.revoke_orders.edit', compact(['order', 'wallet', 'paytabs']));
 
     }
 

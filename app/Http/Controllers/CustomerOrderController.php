@@ -18,7 +18,7 @@ class CustomerOrderController extends Controller
 
         $orders = Customer_order::where('customer_id', $customer->id)->get();
 
-        return view('customer_order.index', compact('orders'));
+        return view('client.customer_order.index', compact('orders'));
 
     }
 
@@ -27,7 +27,7 @@ class CustomerOrderController extends Controller
 
         $order = Customer_order::findOrFail($id);
 
-        return view('customer_order.show', compact('order'));
+        return view('client.customer_order.show', compact('order'));
 
     }
 

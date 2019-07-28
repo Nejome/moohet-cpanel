@@ -25,7 +25,7 @@ class WalletInformationController extends Controller
 
         $orders = Customer_order::where('customer_id', $customer_id)->get();
 
-        return view('wallet.main', compact(['wallet', 'orders']));
+        return view('client.wallet.main', compact(['wallet', 'orders']));
 
     }
 
@@ -42,7 +42,7 @@ class WalletInformationController extends Controller
             ->where('type', '1')
             ->get();
 
-        return view('wallet.charge', compact(['paytabs', 'wallet', 'orders']));
+        return view('client.wallet.charge', compact(['paytabs', 'wallet', 'orders']));
 
     }
 
@@ -238,7 +238,7 @@ class WalletInformationController extends Controller
             ->where('type', '1')
             ->get();
 
-        return view('wallet.charge_transaction_list', compact('paytabs'));
+        return view('client.wallet.charge_transaction_list', compact('paytabs'));
 
     }
 
