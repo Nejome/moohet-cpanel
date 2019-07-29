@@ -14,7 +14,7 @@ class PasswordResetController extends Controller
 
     public function find_user_page(){
 
-        return view('password_reset.find_user');
+        return view('client.password_reset.find_user');
 
     }
 
@@ -72,13 +72,13 @@ class PasswordResetController extends Controller
 
     public function email_sent(){
 
-        return view('password_reset.email_sent');
+        return view('client.password_reset.email_sent');
 
     }
 
     public function wrong_token(){
 
-        return view('password_reset.wrong_token');
+        return view('client.password_reset.wrong_token');
 
     }
 
@@ -138,7 +138,7 @@ class PasswordResetController extends Controller
 
     public function complete(){
 
-        return view('password_reset.complete');
+        return view('client.password_reset.complete');
 
     }
 

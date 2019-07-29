@@ -69,16 +69,16 @@ Supports Thumbs: true
 }
 
 .layer-1-3 a.ready-btn:hover {
-  color: #fff;
-  background: #3EC1D5;
-  border: 1px solid #3EC1D5;
+  color: #fff !important;
+  background: #149dcc !important;
+  border: 1px solid #149dcc !important;
   text-decoration: none;
 }
 
 .ready-btn.right-btn {
   margin-right: 15px;
-  background: #3EC1D5;
-  border: 1px solid #3EC1D5 !important;
+  background: #149dcc;
+  border: 1px solid #149dcc !important;
 }
 
 .ready-btn.right-btn:hover {
@@ -370,9 +370,9 @@ preview-2
 }
 
 .preview-2 .nivo-directionNav a.nivo-nextNav:hover:before, .preview-2 .nivo-directionNav a.nivo-prevNav:hover:before {
-  border-color: #3EC1D5;
+  border-color: #149dcc;
   color: #fff;
-  background: #3EC1D5;
+  background: #149dcc;
 }
 
 .preview-2 .nivo-directionNav a.nivo-nextNav::before {

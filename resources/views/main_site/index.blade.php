@@ -25,41 +25,30 @@
                                 </button>
                                 <!-- Brand -->
                                 <a class="navbar-brand page-scroll sticky-logo" href="#">
-                                    <img src="{{asset('images/4.png')}}" alt="محيط للتجارة الالكترونية" width="180px" height="36px">
+                                    <img src="{{asset('images/1.png')}}" class="d-inline" alt="" width="35px" height="35px">
+                                    <h1>محيط</h1>
                                 </a>
                             </div>
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
-                                <ul class="nav navbar-nav navbar-right">
+                                <ul class="nav navbar-nav navbar-left">
                                     <li class="active">
-                                        <a class="page-scroll" href="#home">Home</a>
+                                        <a class="page-scroll" href="#home">الرئيسية</a>
                                     </li>
                                     <li>
-                                        <a class="page-scroll" href="#about">About</a>
+                                        <a class="page-scroll" href="#about">من نحنا</a>
                                     </li>
                                     <li>
-                                        <a class="page-scroll" href="#services">Services</a>
+                                        <a class="page-scroll" href="#services">خدماتنا</a>
                                     </li>
                                     <li>
-                                        <a class="page-scroll" href="#team">Team</a>
-                                    </li>
-                                    <li>
-                                        <a class="page-scroll" href="#portfolio">Portfolio</a>
-                                    </li>
-
-                                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Drop Down<span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href=# >Drop Down 1</a></li>
-                                            <li><a href=# >Drop Down 2</a></li>
-                                        </ul>
+                                        <a class="page-scroll" href="#fq">الاسئلة الشائعة</a>
                                     </li>
 
                                     <li>
-                                        <a class="page-scroll" href="#blog">Blog</a>
+                                        <a class="page-scroll" href="#contact">اتصل بنا</a>
                                     </li>
-                                    <li>
-                                        <a class="page-scroll" href="#contact">Contact</a>
-                                    </li>
+
                                 </ul>
                             </div>
                             <!-- navbar-collapse -->
@@ -77,9 +66,10 @@
     <div id="home" class="slider-area">
         <div class="bend niceties preview-2">
             <div id="ensign-nivoslider" class="slides">
-                <img src="{{asset('main_site/img/slider/slider1.jpg')}}" alt="" title="#slider-direction-1" />
-                <img src="{{asset('main_site/img/slider/slider2.jpg')}}" alt="" title="#slider-direction-2" />
-                <img src="{{asset('main_site/img/slider/slider3.jpg')}}" alt="" title="#slider-direction-3" />
+                <img src="{{asset('main_site/images/slide1.jpg')}}" alt="محيط للتجارة الالكترونية" title="#slider-direction-1" />
+                <img src="{{asset('main_site/images/slide2.jpg')}}" alt="محيط للتجارة الالكترونية" title="#slider-direction-2" />
+                <img src="{{asset('main_site/images/slide3.jpg')}}" alt="محيط للتجارة الالكترونية" title="#slider-direction-3" />
+                <img src="{{asset('main_site/images/slide4.jpg')}}" alt="محيط للتجارة الالكترونية" title="#slider-direction-4" />
             </div>
 
             <!-- direction 1 -->
@@ -90,16 +80,15 @@
                             <div class="slider-content">
                                 <!-- layer 1 -->
                                 <div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
-                                    <h2 class="title1">The Best Business Information </h2>
+                                    <h2 class="title1">منصة محيط للتجارة الالكترونية</h2>
                                 </div>
                                 <!-- layer 2 -->
                                 <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
-                                    <h1 class="title2">We're In The Business Of Helping You Start Your Business</h1>
+                                    <h1 class="title2">في محيط تستطيع أن تتعاون مع زملائك التجار في شراء البضائع وشحنها إلى بلدك</h1>
                                 </div>
                                 <!-- layer 3 -->
                                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                                    <a class="ready-btn right-btn page-scroll" href="#services">See Services</a>
-                                    <a class="ready-btn page-scroll" href="#about">Learn More</a>
+                                    <a class="ready-btn right-btn page-scroll" href="{{url('/customers/register')}}">ابدأ التجارة الان</a>
                                 </div>
                             </div>
                         </div>
@@ -115,16 +104,15 @@
                             <div class="slider-content text-center">
                                 <!-- layer 1 -->
                                 <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                                    <h2 class="title1">The Best Business Information </h2>
+                                    <h2 class="title1">منصة محيط للتجارة الالكترونية</h2>
                                 </div>
                                 <!-- layer 2 -->
                                 <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
-                                    <h1 class="title2">We're In The Business Of Get Quality Business Service</h1>
+                                    <h1 class="title2">استورد بضاعتك من الخارج</h1>
                                 </div>
                                 <!-- layer 3 -->
                                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                                    <a class="ready-btn right-btn page-scroll" href="#services">See Services</a>
-                                    <a class="ready-btn page-scroll" href="#about">Learn More</a>
+                                    <a class="ready-btn right-btn page-scroll" href="{{url('/customers/register')}}">ابدأ التجارة الان</a>
                                 </div>
                             </div>
                         </div>
@@ -140,22 +128,46 @@
                             <div class="slider-content">
                                 <!-- layer 1 -->
                                 <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                                    <h2 class="title1">The Best business Information </h2>
+                                    <h2 class="title1">منصة محيط للتجارة الالكترونية</h2>
                                 </div>
                                 <!-- layer 2 -->
                                 <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
-                                    <h1 class="title2">Helping Business Security  & Peace of Mind for Your Family</h1>
+                                    <h1 class="title2">واحفظها في مستودعك لدى محيط</h1>
                                 </div>
                                 <!-- layer 3 -->
                                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                                    <a class="ready-btn right-btn page-scroll" href="#services">See Services</a>
-                                    <a class="ready-btn page-scroll" href="#about">Learn More</a>
+                                    <a class="ready-btn right-btn page-scroll" href="{{url('/customers/register')}}">ابدأ التجارة الان</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- direction 3 -->
+            <div id="slider-direction-4" class="slider-direction slider-two">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="slider-content">
+                                <!-- layer 1 -->
+                                <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <h2 class="title1">منصة محيط للتجارة الالكترونية</h2>
+                                </div>
+                                <!-- layer 2 -->
+                                <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                                    <h1 class="title2">واجعل المحترفين يبيعونها لك</h1>
+                                </div>
+                                <!-- layer 3 -->
+                                <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <a class="ready-btn right-btn page-scroll" href="{{url('/customers/register')}}">ابدأ التجارة الان</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <!-- End Slider Area -->
@@ -166,7 +178,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="section-headline text-center">
-                        <h2>About eBusiness</h2>
+                        <h2>من نحن</h2>
                     </div>
                 </div>
             </div>
@@ -182,32 +194,23 @@
                     </div>
                 </div>
                 <!-- single-well end-->
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="col-md-6 col-sm-6 col-xs-12 text-right">
                     <div class="well-middle">
                         <div class="single-well">
-                            <a href="#">
-                                <h4 class="sec-head">project Maintenance</h4>
-                            </a>
-                            <p>
-                                Redug Lagre dolor sit amet, consectetur adipisicing elit. Itaque quas officiis iure aspernatur sit adipisci quaerat unde at nequeRedug Lagre dolor sit amet, consectetur adipisicing elit. Itaque quas officiis iure
-                            </p>
-                            <ul>
-                                <li>
-                                    <i class="fa fa-check"></i> Interior design Package
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i> Building House
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i> Reparing of Residentail Roof
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i> Renovaion of Commercial Office
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i> Make Quality Products
-                                </li>
-                            </ul>
+
+                            نحن مؤسسة سعودية تم تأسيسها عام 1440
+                            تعمل في مجـال خدمات التجـارة الإلكترونيـة
+                            <br>
+                            نحن
+                            طموحـون جداً ونهـدف إلى أن نقـدم لعملائنـا
+                            خدمات متميـزة في عالم التجارة الإلكترونـيـة
+                            تتـمثـل في تسهيـل ممـارسـة العمـل التجـاري
+                            بداية من توفيـر المنتجـات ومروراً بتخزينهـا
+                            وتسويقهـا وانتهـاء بتسليمها للمستهلك النهائـي
+                            قيمنا تتمحور حول الكفاءة والبساطة والإبداع
+                            و
+                            نحب أن نصف أنفسنا بأننا من يصنع المستقبل
+
                         </div>
                     </div>
                 </div>
@@ -394,7 +397,7 @@
     <!-- our-skill-area end -->
 
     <!-- Faq area start -->
-    <div class="faq-area area-padding">
+    <div id="fq" class="faq-area area-padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">

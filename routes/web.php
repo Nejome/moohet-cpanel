@@ -6,7 +6,18 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+Route::get('/customers/register', 'CustomerController@create');
+
 Route::post('/login', 'loginController@login');
+
+/*Password Reset*/
+Route::get('/password_reset/find_user', 'PasswordResetController@find_user_page');
+Route::post('/password_reset/find_user', 'PasswordResetController@find_user');
+Route::get('/password_reset/verify/{token}', 'PasswordResetController@verify');
+Route::get('/password_reset/email_sent', 'PasswordResetController@email_sent');
+Route::get('/password_reset/wrong_token', 'PasswordResetController@wrong_token');
+Route::post('/password_reset/create_password/{token}', 'PasswordResetController@create_password');
+Route::get('/password_reset/complete', 'PasswordResetController@complete');
 
 Route::middleware('auth')->group(function() {
 
@@ -48,15 +59,6 @@ Route::middleware('auth')->group(function() {
     Route::resource('phone_verification', 'PhoneVerificationCodeController');
     Route::post('/phone_verification/generate_code/{customer_id}', 'PhoneVerificationCodeController@store');
     Route::post('/phone_verification/check_code/{customer_id}', 'PhoneVerificationCodeController@check_code');
-
-    /*Password Reset*/
-    Route::get('/password_reset/find_user', 'PasswordResetController@find_user_page');
-    Route::post('/password_reset/find_user', 'PasswordResetController@find_user');
-    Route::get('/password_reset/verify/{token}', 'PasswordResetController@verify');
-    Route::get('/password_reset/email_sent', 'PasswordResetController@email_sent');
-    Route::get('/password_reset/wrong_token', 'PasswordResetController@wrong_token');
-    Route::post('/password_reset/create_password/{token}', 'PasswordResetController@create_password');
-    Route::get('/password_reset/complete', 'PasswordResetController@complete');
 
     /*Notification*/
     Route::resource('notifications', 'NotificationController');

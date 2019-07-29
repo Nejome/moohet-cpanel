@@ -42,14 +42,14 @@
                     <ul class="navbar-nav ml-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link nav-link-icon" href="{{url('/customers/create')}}">
+                            <a class="nav-link nav-link-icon" href="{{url('/customers/register')}}">
                                 <i class="ni ni-circle-08"></i>
                                 <span class="nav-link-inner--text">انشاء حساب</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link nav-link-icon" href="{{url('/')}}">
+                            <a class="nav-link nav-link-icon" href="{{url('/login')}}">
                                 <i class="ni ni-key-25"></i>
                                 <span class="nav-link-inner--text">تسجيل الدخول</span>
                             </a>
@@ -122,7 +122,7 @@
                     <div class="row mt-3">
 
                         <div class="col-6 text-right">
-                            <a href="#" class="text-light"><small>انشاء حساب جديد</small></a>
+                            <a href="{{url('customers/register')}}" class="text-light"><small>انشاء حساب جديد</small></a>
                         </div>
 
                     </div>

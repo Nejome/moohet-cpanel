@@ -34,7 +34,7 @@
 
 @font-face {
   font-family: "Tajawal";
-  src: url("../fonts/Tajawal/Tajawal-Regular.ttf");
+  src: url("../fonts/Tajawal/Tajawal-Regular.ttf")
 }
 
 /*----------------------------------------*/
@@ -89,7 +89,7 @@ p {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Tajawal";
   margin: 0 0 15px;
   color: #444;
   font-weight: 500;
@@ -131,7 +131,7 @@ a {
 }
 
 a:hover {
-  color: #3EC1D5;
+  color: #149dcc !important;
   text-decoration: none;
 }
 
@@ -140,6 +140,7 @@ a:active, a:hover {
 }
 
 body {
+  direction: rtl;
   background: #fff none repeat scroll 0 0;
   color: #444;
   font-family: "Tajawal";
@@ -269,14 +270,14 @@ div#preloader {
   left: 0;
   width: 100%;
   height: auto;
-  background: #efefef;
+  background: rgba(0, 0, 0, 0.40);
   z-index: 9;
 }
 
 .navbar-header a.navbar-brand {
   display: inline-block;
   height: 70px;
-  padding: 8px 0 15px 0;
+  padding: 18px 0;
 }
 
 .main-menu ul.navbar-nav li {
@@ -286,12 +287,11 @@ div#preloader {
 
 .main-menu ul.navbar-nav li a {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-  color: #149dcc;
+  color: #fff;
   font-size: 15px;
   font-weight: 500;
   padding: 24px 0px;
   text-transform: capitalize;
-  letter-spacing: 1px;
 }
 
 .main-menu ul.navbar-nav li.active > a::after {
@@ -314,12 +314,12 @@ div#preloader {
 
 .main-menu ul.navbar-nav li.active a {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-  color: #149dcc;
+  color: #149dcc !important;
   position: relative;
 }
 
 .main-menu ul.navbar-nav li a:hover {
-  color: #3EC1D5;
+  color: #149dcc;
 }
 
 .navbar {
@@ -406,10 +406,11 @@ div#preloader {
 }
 
 .stick .navbar-brand.sticky-logo>img {
-  display: block;
+  display: inline;
 }
 
 .sticky-logo h1 {
+  display: inline;
   color: #fff;
   padding: 0;
   margin: 0;
@@ -463,7 +464,6 @@ div#preloader {
   line-height: 22px;
   padding: 24px 0px;
   text-transform: capitalize;
-  letter-spacing: 1px;
 }
 
 .stick .navbar-default .navbar-toggle .icon-bar {

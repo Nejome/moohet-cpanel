@@ -1,7 +1,7 @@
 @extends('app')
 
 @push('styles')
-    <link href="{{asset('main_site/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('main_site/lib/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('main_site/lib/nivo-slider/css/nivo-slider.css')}}" rel="stylesheet">
     <link href="{{asset('main_site/lib/owlcarousel/owl.carousel.css')}}" rel="stylesheet">
     <link href="{{asset('main_site/lib/owlcarousel/owl.transitions.css')}}" rel="stylesheet">
