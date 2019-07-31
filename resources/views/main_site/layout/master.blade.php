@@ -5,7 +5,7 @@
     <link href="{{asset('main_site/lib/nivo-slider/css/nivo-slider.css')}}" rel="stylesheet">
     <link href="{{asset('main_site/lib/owlcarousel/owl.carousel.css')}}" rel="stylesheet">
     <link href="{{asset('main_site/lib/owlcarousel/owl.transitions.css')}}" rel="stylesheet">
-    <link href="{{asset('main_site/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('main_site/lib/font-awesome/css/all.min.css')}}" rel="stylesheet">
     <link href="{{asset('main_site/lib/animate/animate.min.css')}}" rel="stylesheet">
     <link href="{{asset('main_site/lib/venobox/venobox.css')}}" rel="stylesheet">
     <link href="{{asset('main_site/css/nivo-slider-theme.css')}}" rel="stylesheet">

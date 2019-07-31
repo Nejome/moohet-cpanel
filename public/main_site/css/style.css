@@ -45,6 +45,11 @@ html, body {
   height: 100%;
 }
 
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
 .floatleft {
   float: left;
 }
@@ -154,7 +159,7 @@ body {
 .back-to-top {
   position: fixed;
   display: none;
-  background: #3EC1D5;
+  background: #149dcc;
   color: #fff;
   padding: 6px 12px 9px 12px;
   font-size: 16px;
@@ -591,7 +596,6 @@ div#preloader {
   color: #333;
   display: block;
   font-weight: 700;
-  letter-spacing: 2px;
   margin-left: 40px;
   padding: 6px 10px;
   text-decoration: none;
@@ -1756,7 +1760,6 @@ div#preloader {
 .footer-head h4 {
   color: #444;
   font-size: 16px;
-  letter-spacing: 2px;
   padding-bottom: 10px;
   text-transform: uppercase;
 }
@@ -1802,7 +1805,7 @@ div#preloader {
 }
 
 .footer-icons {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .footer-contacts p span {
@@ -1819,7 +1822,7 @@ div#preloader {
   overflow: hidden;
 }
 
-.popular-tag ul li a:hover, .footer-icons ul li a:hover {
+.popular-tag ul li a:hover/*, .footer-icons ul li a:hover*/ {
   background: #3EC1D5;
   border: 1px solid #3EC1D5;
   color: #fff;

@@ -121,7 +121,7 @@
         
         // Add Direction nav
         if(settings.directionNav){
-            slider.append('<div class="nivo-directionNav"><a class="nivo-prevNav">'+ settings.prevText +'</a><a class="nivo-nextNav">'+ settings.nextText +'</a></div>');
+            slider.append('<div class="nivo-directionNav"><a class="nivo-nextNav">'+ settings.nextText +'</a><a class="nivo-prevNav">'+ settings.prevText +'</a></div>');
             
             $(slider).on('click', 'a.nivo-prevNav', function(){
                 if(vars.running) { return false; }
