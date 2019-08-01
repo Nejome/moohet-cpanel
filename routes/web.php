@@ -1,6 +1,10 @@
 <?php
 
+/*Main Site*/
+
 Route::get('/', 'main_site\HomeController@index');
+
+Route::post('/send_message', 'MessagesController@create');
 
 Route::get('/login', function () {
     return view('login');

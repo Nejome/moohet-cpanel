@@ -52,7 +52,7 @@ class loginController extends Controller
 
         Auth::logout();
 
-        return redirect()->intended('/');
+        return redirect()->intended('/login');
 
     }
 

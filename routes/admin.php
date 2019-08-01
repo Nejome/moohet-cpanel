@@ -60,7 +60,7 @@ Route::middleware('admin')->group(function() {
     Route::resource('sub_categories', 'SubCategoryController');
     Route::get('/sub_categories/{id}/delete', 'SubCategoryController@destroy');
 
-    Route::resource('messages', 'MessageController');
+    Route::resource('messages', 'admin\MessageController');
 
     Route::get('/notifications', 'admin\AdminNotificationController@index');
     Route::get('/notifications/{notification}/show', 'admin\AdminNotificationController@show');
