@@ -23,19 +23,24 @@ Route::get('/password_reset/wrong_token', 'PasswordResetController@wrong_token')
 Route::post('/password_reset/create_password/{token}', 'PasswordResetController@create_password');
 Route::get('/password_reset/complete', 'PasswordResetController@complete');
 
+Route::get('/customers/waiting', 'CustomerController@waiting');
+Route::post('/customers/verify_email', 'CustomerController@verify_email');
+Route::get('/customers/store/{unverified_customer_id}', 'CustomerController@store');
+Route::resource('customers', 'CustomerController');
+
+/*Google Plus register costumer*/
+Route::get('/register/redirect', 'CustomerController@redirectToProvider');
+Route::get('/register/callback', 'CustomerController@handleProviderCallback');
+
 Route::middleware('auth')->group(function() {
 
     Route::get('/logout', 'loginController@logout');
 
     Route::get('/home', 'CustomerHomeController@home');
 
-    Route::get('/customers/waiting', 'CustomerController@waiting');
     Route::get('/customers/{id}/change_password', 'CustomerController@change_password');
     Route::post('/customers/{id}/change_password_store', 'CustomerController@change_password_store');
     Route::post('/customers/{id}/change_image', 'CustomerController@change_image');
-    Route::resource('customers', 'CustomerController');
-    Route::post('/customers/verify_email', 'CustomerController@verify_email');
-    Route::get('/customers/store/{unverified_customer_id}', 'CustomerController@store');
 
     Route::resource('customers_orders', 'CustomerOrderController');
 
@@ -43,9 +48,6 @@ Route::middleware('auth')->group(function() {
     Route::get('/my_products/{store_id}/show', 'StoreController@my_products_show');
     Route::post('/my_products/{store_id}/edit', 'StoreController@edit');
 
-    /*Google Plus register costumer*/
-    Route::get('/register/redirect', 'CustomerController@redirectToProvider');
-    Route::get('/register/callback', 'CustomerController@handleProviderCallback');
 
     /*Wallet info*/
     Route::get('/my_wallet/info', 'WalletInformationController@show');

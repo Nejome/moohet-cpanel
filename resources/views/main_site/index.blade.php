@@ -24,7 +24,7 @@
                                     <span class="icon-bar"></span>
                                 </button>
                                 <!-- Brand -->
-                                <a class="navbar-brand page-scroll sticky-logo" href="#">
+                                <a class="navbar-brand page-scroll sticky-logo" href="{{url('/')}}">
                                     <img src="{{asset('images/1.png')}}" class="d-inline" alt="" width="35px" height="35px">
                                     <h1>محيط</h1>
                                 </a>
@@ -50,6 +50,14 @@
 
                                     <li>
                                         <a class="page-scroll" href="#contact">اتصل بنا</a>
+                                    </li>
+
+                                    <li>
+                                        <a class="page-scroll" href="#">المتجر</a>
+                                    </li>
+
+                                    <li>
+                                        <a class="page-scroll" href="{{url('/login')}}">تسجيل الدخول</a>
                                     </li>
 
                                 </ul>
